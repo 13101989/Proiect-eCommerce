@@ -5,17 +5,21 @@
 		<style>
 
 			body{
-				background-color: #d1cfcf;
+				background-color: #000000;
 				margin: 0px;
-				margin-top: 1px;
-				margin-left: 1px;
+				padding: 0px;
 			}
 
+			.wrapper {
+				  margin:0 auto;
+				  max-width: 1349px;
+				  justify-content: center;  
+				}
 
 			.top{
 				display: none;
-				grid-template-columns: 1344px;
-				grid-template-rows: 132px;
+				grid-template-columns: 1349px;
+				grid-template-rows: 150px;
 				text-align: center;
 				background-color: #ffffff;
 				position: fixed;
@@ -23,7 +27,6 @@
 
 			.grid-item1 {
 				text-align:left;
-				
 				border-right: none;
 				position: fixed;
 			}
@@ -37,16 +40,28 @@
 			}
 
 			.grid-item3 {
-				
 				border-left: none;
 				position: fixed;
 			}
+
+			.grid-item4 {
+				border-left: none;
+				position: fixed;
+				padding-left: 1100px;
+			}
+
+			.i{
+				width: 30px;
+				height: 30px;
+				
+			}
+
 
 			#sunet {
 				position: absolute;
 				width: 240px;
 				height: 130px;
-				padding-left: 100px;
+				padding-left: 115px;
 				padding-top: 1px;
 			}
 
@@ -54,64 +69,164 @@
 				position: absolute;
 				width: 150px;
 				height: 110px;
-				padding-left: 150px;
+				padding-left: 130px;
 				padding-top: 15px;
 
 			}
 
 			#carucior {
 				position: absolute;
-				width: 75px;
-				height: 70px;
-				padding-left: 1200px;
-				padding-top: 15px;
+				width: 65px;
+				height: 60px;
+				padding-left: 1250px;
+				padding-top: 35px;
 			}
 
 			.grid-container{
 				display: none;
-				grid-template-columns: 448px 448px 448px;
-				grid-template-rows: 420px 420px 420px 420px;
+				grid-template-columns: 370px 370px 370px;
+				grid-auto-rows: 420px;
 				text-align: center;
-				background-color: #ffffff;
-				padding-top: 170px;	
+				background-color: #000000;
+				padding-top: 150px;
+				justify-content: center;
+				}
+
+						@media only screen and (max-width: 800px) {
+						    .grid-container{
+								display: none;
+								grid-template-columns: 310px;
+								grid-auto-rows: 380px;
+								text-align: center;
+								background-color: #000000;
+								padding-top: 150px;
+								justify-content: left;
+								
+							}
+
+							.top{
+								display: none;
+								grid-template-columns: 600px;
+								grid-template-rows: 150px;
+								text-align: center;
+								background-color: #ffffff;
+								
+							}
+
+							.grid-item {
+								background-color: #000000;
+								border: 1px solid black;		
+							}
+
+							.grid-item1 {
+							
+							}
+
+							.grid-item2 {
+								border-right: none;
+								border-left: none;
+								padding-bottom: 50px;
+								padding-left: 7px;
+								
+							}
+
+							.grid-item3 {
+								border-left: none;		
+							}
+
+							.grid-item4 {
+								padding-left: 130px;
+								border-left: none;
+								
+								
+							}
+
+							.wrapper {
+								  margin:0 auto;
+								  max-width: 800px;  
+								  text-align: center;
+								  justify-content: center;
+								}
+
+								.i{
+									width: 30px;
+									height: 30px;
+								}
+
+
+								#sunet {
+									position: absolute;
+									width: 130px;
+									height: 90px;
+									padding-top: 1px;
+
+								}
+
+								#unde {
+									position: absolute;
+									width: 75px;
+									height: 60px;
+									padding-left: 15px;
+									padding-top: 25px;
+
+								}
+
+								#carucior {
+									position: absolute;
+									width: 50px;
+									height: 50px;
+									padding-left: 300px;
+									padding-top: 25px;
+								}
+
+								.casti {
+									width: 290px;
+									height: 378px;
+								}
+							}
+			
+			.grid-container .grid-item {
+				width: 370px;
+  				float: left;
 			}
 
+
 			.grid-item {
-				background-color: #ffffff;
+				background-color: #000000;
 				border: 1px solid black;		
 			}
 
 			.casti {
-				width: 445px;
+				width: 368px;
 				height: 418px;
 			}	
 
-			.grid-item:hover {
+			.grid-item:hover img{
 				opacity: 1;
-				transform: scale(1.05);
-				box-shadow: 2px 2px;		
+				transform: scale(0.87);
+				box-shadow: 1px 1px;		
 			}
 
 			.grid-item:hover .centru {
-				opacity: 1;		
+				visibility: visible;	
 			}
 
 			.grid-item:hover .price {
-				opacity: 1;		
+				visibility: visible;		
 			}
 
 			.centru {
-				  opacity: 0;
 				  position: relative;
-				  bottom: 15%;
-				  left: 21%;
+				  bottom: 25%;
+				  left: 32%;
 				  transform: translate(-50%, -50%);
 				  -ms-transform: translate(-50%, -50%);
 				  text-align: center;
+				  visibility: hidden;
 				}
 
 			.text {
-				  padding: 10px 10px;
+				  padding: 3px 3px;
 				  width: 40px;
 				  height: 40px;
 
@@ -122,7 +237,6 @@
 				  width: 40px;
 				  height: 40px;
 				  cursor: pointer;
-
 				}
 
 			.detalii {
@@ -139,7 +253,7 @@
 				  background-color: #000000;
 				  color: white;
 				  font-size: 18px;
-				  padding: 10px 10px;
+				  padding: 5px 5px;
 
 				}	
 
@@ -150,10 +264,10 @@
 }	
 			
 			.price {
-				  opacity: 0;
+				  visibility: hidden;
 				  position: relative;
-				  bottom: 43%;
-				  left: 84%;
+				  bottom: 45%;
+				  left: 80%;
 				  transform: translate(-50%, -50%);
 				  -ms-transform: translate(-50%, -50%);
 				  text-align: center;
@@ -178,8 +292,8 @@
 }
 
 .item {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   position: absolute;
 }
 
@@ -265,7 +379,7 @@
 									<div class="centru">
 										<span class="detalii">Detalii</span><br /><br />
 										<span class="descriere">${listaProduse[i].nume}</span><br /><br />
-										<span class="text"><img class="text" src="carucior.jpg" /></span>
+										<span class="text"><img class="text" src="images.png" /></span>
 									</div>
 									<div class="price">
 										<span class="pret">${listaProduse[i].pret}</span>
@@ -299,6 +413,7 @@
 
 	</head>
 	<body onload="deseneazaGrid()">
+	<div class="wrapper">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<div class="container">
 			  <div class="item item-1"></div>
@@ -309,10 +424,11 @@
 		<div class="top">
 			<div class="grid-item1"><img id="unde" src="wave.png" /></div>
 		 	<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
-		  	<div class="grid-item3"><img id="carucior" src="carucior.jpg" /></div>
+		  	<div class="grid-item3"><img id="carucior" src="carucior.jpg" /></div><br /><br /><br /><br /><br />
+		  	<div class="grid-item4"><a href="https://www.instagram.com/lendmeurears.au/"><img class="i" src="fi-instagram.png" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/lendmeurearsaustralia/"><img class="i" src="fi-facebook.png" /></a>&nbsp;&nbsp;<a href="https://twitter.com/hifiheadphones"><img class="i" src="fi-tumblr.png" /></a></div>
 		</div>
 		<div class="grid-container">
-		  
 		</div>
+	</div>
 	</body>
 </html>
