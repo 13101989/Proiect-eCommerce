@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SuNeTlaPatrat</title>
+		<style>
+
+			body{
+				background-color: #d1cfcf;
+				margin: 0px;
+				margin-top: 1px;
+				margin-left: 1px;
+			}
+
+
+			.top{
+				display: none;
+				grid-template-columns: 1344px;
+				grid-template-rows: 132px;
+				text-align: center;
+				background-color: #ffffff;
+				position: fixed;
+			}
+
+			.grid-item1 {
+				text-align:left;
+				
+				border-right: none;
+				position: fixed;
+			}
+
+			.grid-item2 {
+				text-align:left;
+				border-right: none;
+				border-left: none;
+				position: fixed;
+				padding-left: 435px;
+			}
+
+			.grid-item3 {
+				
+				border-left: none;
+				position: fixed;
+			}
+
+			#sunet {
+				position: absolute;
+				width: 240px;
+				height: 130px;
+				padding-left: 100px;
+				padding-top: 1px;
+			}
+
+			#unde {
+				position: absolute;
+				width: 150px;
+				height: 110px;
+				padding-left: 150px;
+				padding-top: 15px;
+
+			}
+
+			#carucior {
+				position: absolute;
+				width: 75px;
+				height: 70px;
+				padding-left: 1200px;
+				padding-top: 15px;
+			}
+
+			.grid-container{
+				display: none;
+				grid-template-columns: 448px 448px 448px;
+				grid-template-rows: 420px 420px 420px 420px;
+				text-align: center;
+				background-color: #ffffff;
+				padding-top: 170px;	
+			}
+
+			.grid-item {
+				background-color: #ffffff;
+				border: 1px solid black;		
+			}
+
+			.casti {
+				width: 445px;
+				height: 418px;
+			}	
+
+			.grid-item:hover {
+				opacity: 1;
+				transform: scale(1.05);
+				box-shadow: 2px 2px;		
+			}
+
+			.grid-item:hover .centru {
+				opacity: 1;		
+			}
+
+			.grid-item:hover .price {
+				opacity: 1;		
+			}
+
+			.centru {
+				  opacity: 0;
+				  position: relative;
+				  bottom: 15%;
+				  left: 21%;
+				  transform: translate(-50%, -50%);
+				  -ms-transform: translate(-50%, -50%);
+				  text-align: center;
+				}
+
+			.text {
+				  padding: 10px 10px;
+				  width: 40px;
+				  height: 40px;
+
+				}
+
+			.text:hover {
+				  padding: 10px 10px;
+				  width: 40px;
+				  height: 40px;
+				  cursor: pointer;
+
+				}
+
+			.detalii {
+				  background-color: #ffffff;
+				  color: black;
+				  border: 3px solid black;
+				  font-weight: 900;
+				  font-size: 18px;
+				  padding: 10px 10px;
+
+				}
+
+			.descriere {
+				  background-color: #000000;
+				  color: white;
+				  font-size: 18px;
+				  padding: 10px 10px;
+
+				}	
+
+			.detalii:hover {
+				background: #000000;
+				color: #ffffff;
+				cursor: pointer;
+}	
+			
+			.price {
+				  opacity: 0;
+				  position: relative;
+				  bottom: 43%;
+				  left: 84%;
+				  transform: translate(-50%, -50%);
+				  -ms-transform: translate(-50%, -50%);
+				  text-align: center;
+				}
+
+				.pret{
+					color: black;
+					font-weight: 900;
+					font-size: 32px;
+					font-family: "Lucida Console", Monaco, monospace;
+				}
+
+.container {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.item {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+
+.item-1 {
+  background-color: #ffffff;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  animation: item-1_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+.item-2 {
+  background-color: #000000;
+  top: 0;
+  right: 0;
+  animation: item-2_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+.item-3 {
+  background-color: #ffffff;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  animation: item-3_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+.item-4 {
+  background-color: #000000;
+  bottom: 0;
+  left: 0;
+  animation: item-4_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+@keyframes item-1_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(0, 100px)} 
+  50% {transform: translate(100px, 100px)} 
+  75% {transform: translate(100px, 0)} 
+}
+
+@keyframes item-2_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(-100px, 0)} 
+  50% {transform: translate(-100px, 100px)} 
+  75% {transform: translate(0, 100px)} 
+}
+
+@keyframes item-3_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(0, -100px)} 
+  50% {transform: translate(-100px, -100px)} 
+  75% {transform: translate(-100px, 0)} 
+}
+
+@keyframes item-4_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(100px, 0)} 
+  50% {transform: translate(100px, -100px)} 
+  75% {transform: translate(0, -100px)} 
+}
+
+		</style>
+
+		<script>
+
+			setTimeout(function deseneazaGrid() {
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+									
+				listaProduse= JSON.parse(this.responseText);
+				console.log(listaProduse);
+									
+				var grid=document.querySelector(".grid-container");
+
+				var str="";
+
+				for(var i in listaProduse){
+
+					var rand = `<div class="grid-item">
+									<img class="casti" src="${listaProduse[i].imagine}" />
+									<div class="centru">
+										<span class="detalii">Detalii</span><br /><br />
+										<span class="descriere">${listaProduse[i].nume}</span><br /><br />
+										<span class="text"><img class="text" src="carucior.jpg" /></span>
+									</div>
+									<div class="price">
+										<span class="pret">${listaProduse[i].pret}</span>
+									</div>
+								</div>`
+
+					str+=rand;
+
+							}
+
+						console.log(str);
+						grid.innerHTML=str;
+					}
+				};
+
+					xhttp.open("GET", "https://proiect-ecommerce.firebaseio.com/.json", true);
+						document.querySelector(".container").style.display="none";
+						document.querySelector(".item").style.display="none";
+						document.querySelector(".item-1").style.display="none";
+						document.querySelector(".item-2").style.display="none";
+						document.querySelector(".item-3").style.display="none";
+						document.querySelector(".item-4").style.display="none";
+						document.querySelector(".top").style.display="grid";
+						document.querySelector(".grid-container").style.display="grid";
+					xhttp.send();
+
+				},2000)
+						
+
+		</script>
+
+	</head>
+	<body onload="deseneazaGrid()">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<div class="container">
+			  <div class="item item-1"></div>
+			  <div class="item item-2"></div>
+			  <div class="item item-3"></div>
+			  <div class="item item-4"></div>
+			</div>
+		<div class="top">
+			<div class="grid-item1"><img id="unde" src="wave.png" /></div>
+		 	<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
+		  	<div class="grid-item3"><img id="carucior" src="carucior.jpg" /></div>
+		</div>
+		<div class="grid-container">
+		  
+		</div>
+	</body>
+</html>
