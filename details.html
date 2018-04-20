@@ -2,6 +2,7 @@
 	<html>
 		<head>
 			<title>Detalii produs</title>
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
 			<style>
 				body{
@@ -72,23 +73,28 @@
 				}
 
 				#butonCos {
-					height: 40px;
+					height: 90px;
+					width: 120px;
 					background-color: #ffffff;
 					color:#000000;
 					cursor: pointer;
 					border: 3px solid black;
 					  font-weight: 500;
 					  font-size: 18px;
-					  margin-top: 130px;
+					  margin-top: 100px;
+					  border-radius: 5px;
+					  position: relative;
+					box-sizing: border-box;
+					transition: all 500ms ease; 
+				  	overflow:hidden;
+
 				}
 
 
-				#butonCos:hover{
+#butonCos:hover {
+  box-shadow: 3px 5px 11px #000;
+}
 
-				background: #000000;
-				color: #ffffff;
-				cursor: pointer;
-			}
 
 			.top{
 				display: grid;
@@ -262,7 +268,7 @@
 					<div class="grid"><h1 id="nume"></h1></div>
 					<div class="grid"><img id="imagine" src="" /></div>
 					<div class="grid">
-						<input type="button" id="butonCos" value="Adauga in cosul de cumparaturi" />
+						<button id="butonCos"><i class="fas fa-shopping-cart">&nbsp;&nbsp;Adauga</i></button>
 						<div id="pret"></div>
 					</div>
 				 	<div class="grid" id="descriere"></div>
