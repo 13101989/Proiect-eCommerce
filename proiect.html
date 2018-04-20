@@ -355,6 +355,11 @@
   75% {transform: translate(0, -100px)} 
 }
 
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
 		</style>
 
 		<script>
@@ -377,7 +382,7 @@
 					var rand = `<div class="grid-item">
 									<img class="casti" src="${listaProduse[i].imagine}" />
 									<div class="centru">
-										<span class="detalii">Detalii</span><br /><br />
+										<span class="detalii"><a href="details.html?id=${i}">Detalii</a></span><br /><br />
 										<span class="descriere">${listaProduse[i].nume}</span><br /><br />
 										<span class="text"><img class="text" src="images.png" /></span>
 									</div>
@@ -423,7 +428,7 @@
 			</div>
 		<div class="top">
 			<div class="grid-item1"><img id="unde" src="wave.png" /></div>
-		 	<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
+		 	<div class="grid-item2"><a href="proiect.html"><img id="sunet" src="sunet.jpg" /></a></div>
 		  	<div class="grid-item3"><img id="carucior" src="carucior.jpg" /></div><br /><br /><br /><br /><br />
 		  	<div class="grid-item4"><a href="https://www.instagram.com/lendmeurears.au/"><img class="i" src="fi-instagram.png" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/lendmeurearsaustralia/"><img class="i" src="fi-facebook.png" /></a>&nbsp;&nbsp;<a href="https://twitter.com/hifiheadphones"><img class="i" src="fi-tumblr.png" /></a></div>
 		</div>

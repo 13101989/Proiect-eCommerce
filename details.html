@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Detalii produs</title>
+
+			<style>
+				body{
+				background-color: #ffffff;
+				margin: 0px;
+				padding: 0px;
+			}
+
+			.wrapper {
+				  margin:0 auto;
+				  max-width: 1389px;
+				  justify-content: center;  
+				}
+
+				.containerImagine{
+					display: grid;
+					grid-template-columns: 680px 320px;
+					grid-template-rows: 60px 422px 100px;
+					grid-row-gap: 10px;
+					grid-column-gap: 40px;
+					text-align: center;
+					background-color: #ffffff;
+					justify-content: center;
+					border-left: 122px solid black;
+					border-right: 119px solid black;
+					
+				}
+
+				.grid{
+					border: 5px solid black;
+				}
+
+				.containerImagine div:nth-child(1) {
+   					grid-column: 1 / span 2;
+   					text-align: left;
+   					padding-left: 240px;
+   					border: none;	
+			}
+
+				.containerImagine div:nth-child(4) {
+   					grid-column: 1 / span 2;
+			}
+
+				.containerImagine div:nth-child(3) {
+   					 border: none;
+			}
+
+
+				#imagine{
+					width: 450px;
+					height: 412px;		
+				}
+
+
+				#descriere{
+					font-family: Tahoma, Geneva, sans-serif;
+					text-align: left;
+					padding: 15px;
+					font-weight: 500;
+				}
+
+				#pret{
+					color: black;
+					font-weight: 900;
+					font-size: 38px;
+					font-family: "Lucida Console", Monaco, monospace;	
+					margin-top: 110px;	
+				}
+
+				#butonCos {
+					height: 40px;
+					background-color: #ffffff;
+					color:#000000;
+					cursor: pointer;
+					border: 3px solid black;
+					  font-weight: 500;
+					  font-size: 18px;
+					  margin-top: 130px;
+				}
+
+
+				#butonCos:hover{
+
+				background: #000000;
+				color: #ffffff;
+				cursor: pointer;
+			}
+
+			.top{
+				display: grid;
+				grid-template-columns: 1389px;
+				grid-template-rows: 150px;
+				text-align: center;
+				background-color: #ffffff;
+				position: fixed;
+				border-bottom: 1px solid black;
+			}
+
+			.grid-item1 {
+				text-align:left;
+				border-right: none;
+				position: fixed;
+			}
+
+			.grid-item2 {
+				text-align:left;
+				border-right: none;
+				border-left: none;
+				position: fixed;
+				padding-left: 435px;
+			}
+
+			.grid-item3 {
+				border-left: none;
+				position: fixed;
+			}
+
+			.grid-item4 {
+				border-left: none;
+				position: fixed;
+				padding-left: 1100px;
+			}
+
+			.i{
+				width: 30px;
+				height: 30px;
+				
+			}
+
+
+			#sunet {
+				position: absolute;
+				width: 240px;
+				height: 130px;
+				padding-left: 115px;
+				padding-top: 1px;
+			}
+
+			#unde {
+				position: absolute;
+				width: 150px;
+				height: 110px;
+				padding-left: 130px;
+				padding-top: 15px;
+
+			}
+
+			#carucior {
+				position: absolute;
+				width: 65px;
+				height: 60px;
+				padding-left: 1250px;
+				padding-top: 35px;
+			}
+					@media only screen and (max-width: 800px) {
+						.top{
+								display: grid;
+								grid-template-columns: 600px;
+								grid-template-rows: 150px;
+								text-align: center;
+								background-color: #ffffff;		
+							}
+
+							.grid-item1 {
+							
+							}
+
+							.grid-item2 {
+								border-right: none;
+								border-left: none;
+								padding-bottom: 50px;
+								padding-left: 7px;
+								
+							}
+
+							.grid-item3 {
+								border-left: none;		
+							}
+
+							.grid-item4 {
+								padding-left: 130px;
+								border-left: none;
+								
+								
+							}
+
+							.wrapper {
+								  margin:0 auto;
+								  max-width: 800px;  
+								  text-align: center;
+								  justify-content: center;
+								}
+
+								.i{
+									width: 30px;
+									height: 30px;
+								}
+
+
+								#sunet {
+									position: absolute;
+									width: 130px;
+									height: 90px;
+									padding-top: 1px;
+
+								}
+
+								#unde {
+									position: absolute;
+									width: 75px;
+									height: 60px;
+									padding-left: 15px;
+									padding-top: 25px;
+
+								}
+
+								#carucior {
+									position: absolute;
+									width: 50px;
+									height: 50px;
+									padding-left: 300px;
+									padding-top: 25px;
+								}
+							}
+			</style>
+
+			<script>
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				   
+				   var detalii = JSON.parse(this.responseText);
+				   console.log(detalii);
+				   
+				   	document.getElementById("nume").innerHTML = detalii.nume;
+                	document.getElementById("imagine").src = detalii.imagine;
+               	 	document.getElementById("descriere").innerHTML = detalii.descriere;
+               	 	document.getElementById("pret").innerHTML = detalii.pret;
+				}
+			}
+			var id = window.location.search.substring(4);
+			xhttp.open("GET", "https://proiect-ecommerce.firebaseio.com/"+ id +".json", true);
+			xhttp.send();
+
+			</script>
+		</head>
+
+		<body>
+		<div class="wrapper">
+			<div class="top">
+				<div class="grid-item1"><img id="unde" src="wave.png" /></div>
+			 	<div class="grid-item2"><a href="proiect.html"><img id="sunet" src="sunet.jpg" /></a></div>
+			  	<div class="grid-item3"><img id="carucior" src="carucior.jpg" /></div><br /><br /><br /><br /><br />
+			  	<div class="grid-item4"><a href="https://www.instagram.com/lendmeurears.au/"><img class="i" src="fi-instagram.png" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/lendmeurearsaustralia/"><img class="i" src="fi-facebook.png" /></a>&nbsp;&nbsp;<a href="https://twitter.com/hifiheadphones"><img class="i" src="fi-tumblr.png" /></a></div>
+			</div><br /><br /><br /><br /><br /><br /><br /><br />
+				<div class="containerImagine">
+					<div class="grid"><h1 id="nume"></h1></div>
+					<div class="grid"><img id="imagine" src="" /></div>
+					<div class="grid">
+						<input type="button" id="butonCos" value="Adauga in cosul de cumparaturi" />
+						<div id="pret"></div>
+					</div>
+				 	<div class="grid" id="descriere"></div>
+			 	</div>
+		</div>
+		</body>
+	</html>
