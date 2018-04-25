@@ -303,7 +303,27 @@
 			xhttp.send();
 
 
-			function bandaCos() {
+			function bandaCos(form,event) {
+
+				event.preventDefault();
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				   
+				   listaProduse = JSON.parse(this.responseText);
+					console.log(listaProduse);		  
+				}
+			}
+
+			xhttp.open("POST", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
+			xhttp.send(JSON.stringify({
+					imagine: document.getElementById("imagine").src,
+					produs: document.getElementById("nume").innerHTML,
+                    cantitate: document.getElementById("plus_minus").value,
+                    pret: document.getElementById("pret").innerHTML,
+				}));
+
 				document.getElementById("product").innerHTML = document.getElementById("nume").innerHTML;
 				document.getElementById("bandaCos").style.display = "block";
 				
@@ -331,7 +351,7 @@
 					<div class="grid"><img id="imagine" src="" /></div>
 					<div class="grid">
 						<a href="proiect.html"><button id="paginaDeProduse"><i class="fas fa-arrow-left">&nbsp;&nbsp;Inapoi la pagina de produse</i></button></a><br /><br /><br />
-						<button id="butonCos" onclick="bandaCos()"><i id="awesome" class="fas fa-cart-plus fa-3x"></i></button><br /><br /><br />
+						<button id="butonCos" onclick="bandaCos(this,event)"><i id="awesome" class="fas fa-cart-plus fa-3x"></i></button><br /><br /><br />
 						<div class="produse_cantitate">Produse pe stoc: <span id="produsePeStoc"></span></div><br />
 						<div class="produse_cantitate" id="cantitate">Cantitate:&nbsp;<input type="number" id="plus_minus" min="1" max="10" value="1" /></div>
 						<div id="pret"></div>

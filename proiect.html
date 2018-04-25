@@ -218,7 +218,7 @@
 
 			.centru {
 				  position: relative;
-				  bottom: 25%;
+				  bottom: 23%;
 				  left: 32%;
 				  transform: translate(-50%, -50%);
 				  -ms-transform: translate(-50%, -50%);
@@ -227,17 +227,17 @@
 				}
 
 			.text {
-				  padding: 3px 3px;
+				  padding: 5px 5px;
 				  width: 40px;
-				  height: 40px;
-
+				  height: 60px;
+				  background-color: white;
+				  border: 0.5px solid black;
 				}
 
+			
 			.text:hover {
-				  padding: 10px 10px;
-				  width: 40px;
-				  height: 40px;
 				  cursor: pointer;
+				  border: 2px solid black;
 				}
 
 			.detalii {
@@ -246,7 +246,7 @@
 				  border: 3px solid black;
 				  font-weight: 900;
 				  font-size: 18px;
-				  padding: 10px 10px;
+				  padding: 7px 7px;
 
 				}
 
@@ -381,14 +381,14 @@
 				for(var i in listaProduse){
 
 					var rand = `<div class="grid-item">
-									<img class="casti" src="${listaProduse[i].imagine}" />
+									<img class="casti" id="${i}A" src="${listaProduse[i].imagine}" />
 									<div class="centru">
-										<span class="detalii"><a href="details.html?id=${i}">Detalii</a></span><br /><br />
-										<span class="descriere">${listaProduse[i].nume}</span><br /><br />
-										<span class="text"><img class="text" src="images.png" /></span>
+										<a href="details.html?id=${i}"><span class="detalii">Detalii</span><br /><br /></a>
+										<span class="descriere" id="${i}B">${listaProduse[i].nume}</span><br /><br />
+										<span class="text" onclick="adauga(${i})"><i class="fas fa-shopping-cart fa-lg"></i></span>
 									</div>
 									<div class="price">
-										<span class="pret">${listaProduse[i].pret}</span>
+										<span class="pret" id="${i}C">${listaProduse[i].pret}</span>
 									</div>
 								</div>`
 
@@ -413,6 +413,28 @@
 					xhttp.send();
 
 				},2000)
+
+			function adauga(index) {
+
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				   
+				   listaProduse = JSON.parse(this.responseText);
+					console.log(listaProduse);		  
+				}
+			}
+
+			xhttp.open("POST", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
+			xhttp.send(JSON.stringify({
+					imagine: document.getElementById(""+index+"A").src,
+					produs: document.getElementById(""+index+"B").innerHTML,
+                    cantitate: 1,
+                    pret: document.getElementById(""+index+"C").innerHTML,
+				}));
+
+			}
 						
 
 		</script>

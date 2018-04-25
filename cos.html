@@ -92,11 +92,12 @@
 					border-radius: 10px;
 					outline: none;
 					margin-top: 20px;
-					margin-left: 20px;
+					margin-left: 1000px;
 				}
 
 				#paginaDeProduse:hover {
 					border: 2px solid black;
+
 				}
 
 				.gridContainer{
@@ -106,7 +107,7 @@
 					grid-auto-rows: 80px;
 					text-align: center;
 					background-color: #ffffff;
-					padding-left: 150px;
+					padding-left: 70px;
 
 				}
 
@@ -138,11 +139,29 @@
 					text-align:center;
 				}
 
+				a {
+					text-decoration: none;
+					color: inherit;
+				}
+
+				.x:hover {
+					color: red;
+					text-decoration: underline;
+				}
+
+				.produs:hover {
+					color: blue;
+					text-decoration: underline;
+				}
+
+
+
 
 
 			</style>
 			<script>
 
+				
 				function deseneazaGrid() {
 
 				var xhttp = new XMLHttpRequest();
@@ -164,10 +183,10 @@
 				for(var i in listaProduse){
 
 					var rand = `<div class="cell1"><img class="casti" src="${listaProduse[i].imagine}" /></div>
-								<div class="cell2">${listaProduse[i].nume}</div>
-								<div class="cell2"><input type="number" id="plus_minus" min="1" max="10" value="1" /></div>
+								<div class="cell2"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
+								<div class="cell2"><input type="number" id="plus_minus" min="1" max="10" value="${listaProduse[i].cantitate}" /></div>
 								<div class="cell2">${listaProduse[i].pret}</div>
-								<div class="cell2">X</div>`
+								<div class="cell2"><a href="#" class="x" onclick="elimina('${i}')">X</a></div>`
 
 					str+=rand;
 
@@ -178,8 +197,52 @@
 					}
 				};
 
-					xhttp.open("GET", "https://proiect-ecommerce.firebaseio.com/.json", true);
+					xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
 					xhttp.send();
+
+				}
+
+				function elimina(index){
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				   deseneazaGrid();
+				 
+					}
+				}
+				
+				xhttp.open("DELETE", "https://coscumparaturi-90c56.firebaseio.com/"+index+".json", true);
+				xhttp.send();
+				
+				}
+
+				function back(index){
+
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+				   
+				   var listaProduse = JSON.parse(this.responseText);
+				   console.log(listaProduse);
+
+				   var produs=document.getElementById(""+index+"").innerHTML;
+
+				   for(var i in listaProduse){
+
+				   	if (produs===listaProduse[i].nume) {
+				   		index=i;
+				   		console.log(produs);
+				   	}
+
+				   	 window.location = "details.html?id="+index+"";
+  
+				}}
+			}
+			
+			xhttp.open("GET", "https://proiect-ecommerce.firebaseio.com/.json", true);
+			xhttp.send();
 
 				}
 			
