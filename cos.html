@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Cos de cumparaturi</title>
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+			<style>
+				body{
+				background-color: #ffffff;
+				margin: 0px;
+				padding: 0px;
+			}
+
+			.wrapper {
+				  margin:0 auto;
+				  max-width: 1389px;
+				  justify-content: center;  
+				}
+
+
+			.top{
+				display: grid;
+				grid-template-columns: 1389px;
+				grid-template-rows: 150px;
+				text-align: center;
+				background-color: #ffffff;
+				position: fixed;
+				border-bottom: 1px solid black;
+			}
+
+			.grid-item1 {
+				text-align:left;
+				border-right: none;
+				position: fixed;
+			}
+
+			.grid-item2 {
+				text-align:left;
+				border-right: none;
+				border-left: none;
+				position: fixed;
+				padding-left: 435px;
+			}
+
+			.grid-item3 {
+				border-left: none;
+				position: fixed;
+			}
+
+			.grid-item4 {
+				border-left: none;
+				position: fixed;
+				padding-left: 1100px;
+			}
+
+			.i{
+				width: 30px;
+				height: 30px;
+				
+			}
+
+
+			#sunet {
+				position: absolute;
+				width: 240px;
+				height: 130px;
+				padding-left: 115px;
+				padding-top: 1px;
+			}
+
+			#unde {
+				position: absolute;
+				width: 150px;
+				height: 110px;
+				padding-left: 130px;
+				padding-top: 15px;
+
+			}
+
+			#carucior {
+				position: absolute;
+				width: 65px;
+				height: 60px;
+				padding-left: 1250px;
+				padding-top: 35px;
+			}
+
+			#paginaDeProduse{
+					height: 40px;
+					font-size: 15px;
+					color:black;
+					background-color: white;
+					border-radius: 10px;
+					outline: none;
+					margin-top: 20px;
+					margin-left: 20px;
+				}
+
+				#paginaDeProduse:hover {
+					border: 2px solid black;
+				}
+
+				.gridContainer{
+					display: grid;
+					grid-template-columns: 170px 170px 170px 170px 60px;
+					grid-template-rows: 30px;
+					grid-auto-rows: 80px;
+					text-align: center;
+					background-color: #ffffff;
+					padding-left: 150px;
+
+				}
+
+				.cell {
+					padding-top: 5px;
+					background-color: #000000;
+					color: #ffffff;
+				}
+
+				.cell1 {
+					border: 1px solid black;
+				}
+
+				.cell2 {
+					border: 1px solid black;
+					padding-top: 30px;
+					font-size: 18px;
+					font-family: "Lucida Console", Monaco, monospace;	
+				}
+
+				.casti{
+					width: 72px;
+					height: 66px;
+				}
+
+				#plus_minus {
+					width: 35px;
+					height: 20px;
+					text-align:center;
+				}
+
+
+
+			</style>
+			<script>
+
+				function deseneazaGrid() {
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+									
+				listaProduse= JSON.parse(this.responseText);
+				console.log(listaProduse);
+									
+				var grid=document.querySelector(".gridContainer");
+
+				var str=`<div class="gridContainer">
+							<div class="cell">Imagine</div>
+							<div class="cell">Produs</div>
+							<div class="cell">Cantitate</div>
+							<div class="cell">Pret</div>
+							<div class="cell">Elimina</div>`;
+
+				for(var i in listaProduse){
+
+					var rand = `<div class="cell1"><img class="casti" src="${listaProduse[i].imagine}" /></div>
+								<div class="cell2">${listaProduse[i].nume}</div>
+								<div class="cell2"><input type="number" id="plus_minus" min="1" max="10" value="1" /></div>
+								<div class="cell2">${listaProduse[i].pret}</div>
+								<div class="cell2">X</div>`
+
+					str+=rand;
+
+							}
+
+						console.log(str);
+						grid.innerHTML=str;
+					}
+				};
+
+					xhttp.open("GET", "https://proiect-ecommerce.firebaseio.com/.json", true);
+					xhttp.send();
+
+				}
+			
+			</script>
+		</head>
+
+		<body onload="deseneazaGrid()">
+		<div class="wrapper">
+			<div class="top">
+				<div class="grid-item1"><img id="unde" src="wave.png" /></div>
+			 	<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
+			  	<div class="grid-item3"><i id="carucior" class="fas fa-shopping-cart fa-4x"></i></div><br /><br /><br /><br /><br />
+			  	<div class="grid-item4"><a href="https://www.instagram.com/lendmeurears.au/"><img class="i" src="fi-instagram.png" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/lendmeurearsaustralia/"><img class="i" src="fi-facebook.png" /></a>&nbsp;&nbsp;<a href="https://twitter.com/hifiheadphones"><img class="i" src="fi-tumblr.png" /></a></div>
+			</div><br /><br /><br /><br /><br /><br /><br /><br />
+			<a href="proiect.html"><button id="paginaDeProduse"><i class="fas fa-arrow-left">&nbsp;&nbsp;Inapoi la pagina de produse</i></button></a><br />
+			<div class="gridContainer">
+			</div>
+		</div>
+		</body>
+	</html>
