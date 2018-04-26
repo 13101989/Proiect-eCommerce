@@ -98,6 +98,7 @@
 				font-size: 21px;
 				visibility: hidden;
 				outline: none;
+				cursor: pointer;
 			}
 
 			#paginaDeProduse{
@@ -120,7 +121,7 @@
 					display: grid;
 					grid-template-columns: 200px 200px 160px 170px 60px;
 					grid-template-rows: 30px;
-					grid-auto-rows: 80px;
+					grid-auto-rows: 90px;
 					text-align: center;
 					background-color: #ffffff;
 					padding-left: 70px;
@@ -135,6 +136,7 @@
 
 				.cell1 {
 					border: 1px solid black;
+					padding-top: 10px;
 				}
 
 				.cell2 {
@@ -145,8 +147,8 @@
 				}
 
 				.casti{
-					width: 72px;
-					height: 66px;
+					width: 80px;
+					height: 72px;
 				}
 
 				#plus_minus {
@@ -168,6 +170,15 @@
 				.produs:hover {
 					color: blue;
 					text-decoration: underline;
+				}
+
+				#nu {
+					text-align: center;
+					font-size: 25px;
+					padding-left: 350px;
+					padding-top: 50px;
+					display: block;
+					width: 500px;
 				}
 
 
@@ -197,8 +208,11 @@
 							<div class="cell">Pret</div>
 							<div class="cell">Elimina</div>`
 				
+				if (listaProduse) {
 
 				for(var i in listaProduse){
+
+
 
 					var rand = `<div class="cell1"><img class="casti" src="${listaProduse[i].imagine}" /></div>
 								<div class="cell2"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
@@ -212,7 +226,19 @@
 
 						console.log(str);
 						grid.innerHTML=str;
+
+						}else{
+							var str= "";
+							var rand = `<div id="nu">Nu ati selectat nici un produs.</div>`
+
+						str+=rand;
+
+						console.log(str);
+						grid.innerHTML=str;
+
+						}
 					}
+
 				};
 
 					xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
@@ -302,7 +328,7 @@
 			  	<div class="grid-item3">
 		  			<a href="cos.html">
 		  				<i id="carucior" class="fas fa-shopping-cart fa-4x"></i>
-		  				<input type="text" id="numarProduse" value="10"></input>
+		  				<input type="text" id="numarProduse" value="0"></input>
 		  			</a>
 		  		</div><br /><br /><br /><br /><br />
 			  	<div class="grid-item4"><a href="https://www.instagram.com/lendmeurears.au/"><img class="i" src="fi-instagram.png" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/lendmeurearsaustralia/"><img class="i" src="fi-facebook.png" /></a>&nbsp;&nbsp;<a href="https://twitter.com/hifiheadphones"><img class="i" src="fi-tumblr.png" /></a></div>
