@@ -106,26 +106,29 @@
 				}
 
 #butonCos:hover {
-	opacity: 0.8;
+	border: 3px solid black;
 }
 
 				#paginaDeProduse{
 					height: 40px;
 					font-size: 15px;
-					color:white;
-					background-color: black;
+					color:black;
+					background-color: white;
 					border-radius: 10px;
 					outline: none;
+					
+				
 				}
 
-#paginaDeProduse:hover {
-	opacity: 0.8;
-}
+				#paginaDeProduse:hover {
+					border: 3px solid black;
+
+				}
 
 
 				#bandaCos {
 					position: fixed;
-					margin-top: 7px;
+					margin-top: -143px;
 					display: none;
 					color: #ffffff;
 					background-color: #000000;
@@ -204,6 +207,22 @@
 				height: 60px;
 				padding-left: 1250px;
 				padding-top: 35px;
+				z-index:-1;
+			}
+
+			#numarProduse {
+				background-color: #ffbffb;
+				width: 27px;
+				height: 31px;
+				margin-left: 1277px;
+				margin-top: 28px;
+				z-index:2;
+				text-align: center;
+				border-radius:10px;
+				font-weight: bold;
+				font-size: 21px;
+				visibility: hidden;
+				outline: none;
 			}
 
 			a {
@@ -302,6 +321,35 @@
 			xhttp.open("GET", "https://proiect-ecommerce.firebaseio.com/"+ id +".json", true);
 			xhttp.send();
 
+			function cart() {
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+
+						listaProduse= JSON.parse(this.responseText);
+
+							var element_count = 0;
+
+						for(var i in listaProduse){
+						    if(listaProduse.hasOwnProperty(i)){
+						        element_count += Number(listaProduse[i].cantitate);
+						    }    
+						}
+
+						if (element_count != 0)	{
+
+				 		document.getElementById("numarProduse").style.visibility="visible";
+				 		document.getElementById("numarProduse").value= element_count;
+
+					}}
+				}
+				
+				xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
+				xhttp.send();
+
+				}
+
 
 			function bandaCos(form,event) {
 
@@ -312,7 +360,8 @@
 				if (this.readyState == 4 && this.status == 200) {
 				   
 				   listaProduse = JSON.parse(this.responseText);
-					console.log(listaProduse);		  
+					console.log(listaProduse);	
+					cart();	  
 				}
 			}
 
@@ -326,23 +375,30 @@
 
 				document.getElementById("product").innerHTML = document.getElementById("nume").innerHTML;
 				document.getElementById("bandaCos").style.display = "block";
+
 				
 
 				setTimeout(function revenire () {
 					document.getElementById("bandaCos").style.display = "none";
 				}, 2000);
+
 			}
 
 			
 			</script>
 		</head>
 
-		<body>
+		<body onload="cart()">
 		<div class="wrapper">
 			<div class="top">
 				<div class="grid-item1"><img id="unde" src="wave.png" /></div>
 			 	<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
-			  	<div class="grid-item3"><a href="cos.html"><i id="carucior" class="fas fa-shopping-cart fa-4x"></i></a></div><br /><br /><br /><br /><br />
+			  	<div class="grid-item3">
+			  		<a href="cos.html">
+		  				<i id="carucior" class="fas fa-shopping-cart fa-4x"></i>
+		  				<input type="text" id="numarProduse" value="0"></input>
+		  			</a>
+		  	</div><br /><br /><br /><br /><br />
 			  	<div class="grid-item4"><a href="https://www.instagram.com/lendmeurears.au/"><img class="i" src="fi-instagram.png" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/lendmeurearsaustralia/"><img class="i" src="fi-facebook.png" /></a>&nbsp;&nbsp;<a href="https://twitter.com/hifiheadphones"><img class="i" src="fi-tumblr.png" /></a></div>
 			</div><br /><br /><br /><br /><br /><br /><br /><br />
 				<div id="bandaCos"><span id="product"></span> a fost adaugat cu succes in cosul tau de cumparaturi!</div>

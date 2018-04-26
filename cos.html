@@ -82,6 +82,22 @@
 				height: 60px;
 				padding-left: 1250px;
 				padding-top: 35px;
+				z-index:-1;
+			}
+
+			#numarProduse {
+				background-color: #ffbffb;
+				width: 27px;
+				height: 31px;
+				margin-left: 1277px;
+				margin-top: 28px;
+				z-index:2;
+				text-align: center;
+				border-radius:10px;
+				font-weight: bold;
+				font-size: 21px;
+				visibility: hidden;
+				outline: none;
 			}
 
 			#paginaDeProduse{
@@ -102,12 +118,12 @@
 
 				.gridContainer{
 					display: grid;
-					grid-template-columns: 170px 170px 170px 170px 60px;
+					grid-template-columns: 200px 200px 160px 170px 60px;
 					grid-template-rows: 30px;
 					grid-auto-rows: 80px;
 					text-align: center;
 					background-color: #ffffff;
-					padding-left: 100px;
+					padding-left: 70px;
 
 				}
 
@@ -170,15 +186,17 @@
 									
 				listaProduse= JSON.parse(this.responseText);
 				console.log(listaProduse);
+				cart();
 									
 				var grid=document.querySelector(".gridContainer");
 
-				var str=`<div class="gridContainer">
+					var str=`<div class="gridContainer">
 							<div class="cell">Imagine</div>
 							<div class="cell">Produs</div>
 							<div class="cell">Cantitate</div>
 							<div class="cell">Pret</div>
-							<div class="cell">Elimina</div>`;
+							<div class="cell">Elimina</div>`
+				
 
 				for(var i in listaProduse){
 
@@ -202,13 +220,40 @@
 
 				}
 
+				function cart() {
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+
+						listaProduse= JSON.parse(this.responseText);
+
+							var element_count = 0;
+
+						for(var i in listaProduse){
+						    if(listaProduse.hasOwnProperty(i)){
+						        element_count += Number(listaProduse[i].cantitate);
+						    }    
+						}
+
+
+				 		document.getElementById("numarProduse").style.visibility="visible";
+				 		document.getElementById("numarProduse").value= element_count;
+
+					}
+				}
+				
+				xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
+				xhttp.send();
+
+				}
+
 				function elimina(index){
 
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 				   deseneazaGrid();
-				 
 					}
 				}
 				
@@ -254,10 +299,15 @@
 			<div class="top">
 				<div class="grid-item1"><img id="unde" src="wave.png" /></div>
 			 	<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
-			  	<div class="grid-item3"><i id="carucior" class="fas fa-shopping-cart fa-4x"></i></div><br /><br /><br /><br /><br />
+			  	<div class="grid-item3">
+		  			<a href="cos.html">
+		  				<i id="carucior" class="fas fa-shopping-cart fa-4x"></i>
+		  				<input type="text" id="numarProduse" value="10"></input>
+		  			</a>
+		  		</div><br /><br /><br /><br /><br />
 			  	<div class="grid-item4"><a href="https://www.instagram.com/lendmeurears.au/"><img class="i" src="fi-instagram.png" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/lendmeurearsaustralia/"><img class="i" src="fi-facebook.png" /></a>&nbsp;&nbsp;<a href="https://twitter.com/hifiheadphones"><img class="i" src="fi-tumblr.png" /></a></div>
 			</div><br /><br /><br /><br /><br /><br /><br /><br />
-			<a href="proiect.html"><button id="paginaDeProduse"><i class="fas fa-arrow-left">&nbsp;&nbsp;Inapoi la pagina de produse</i></button></a><br />
+			<a href="proiect.html"><button id="paginaDeProduse"><i class="fas fa-arrow-left">&nbsp;&nbsp;Continua cumparaturile</i></button></a><br />
 			<div class="gridContainer">
 			</div>
 		</div>
