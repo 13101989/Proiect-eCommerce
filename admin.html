@@ -134,6 +134,60 @@
 				border: 3px solid #e2e222;
 
 			}
+
+			.stergere {
+				position: fixed;
+				background-color: #bca9a9;
+				width: 1389px;
+				padding-left: 530px;
+				padding-bottom: 15px;
+				margin-top: 220px;
+				display:none;
+			}
+
+			#DA {
+				background-color: #e2e222; 
+				color: black;
+				
+				width: 60px;
+				border-radius: 10px;
+				height: 40px;
+			}
+
+			#DA:hover {
+				border: 3px solid black;
+			}
+
+			#NU{
+				background-color: black; 
+				color: #e2e222;
+				width: 60px;
+				border-radius: 10px;
+				height: 40px;
+			}
+
+			#NU:hover {
+				border: 3px solid #e2e222;
+			}
+
+			.site {
+				margin-left: 370px;
+				width: 130px;
+				height: 80px;
+				font-size: 50px;
+				font-weight: bold;
+				background-color: white;
+				border: 1px solid black;
+			}
+
+			.site:hover {
+				background-color: black;
+				color: white;
+			}
+
+			.insert{
+				color: #fc1b5f;
+			}
 			
 		</style>
 
@@ -177,15 +231,10 @@
 				}
 
 				function stergere(index) {
-
-					var xhttp = new XMLHttpRequest();
-					xhttp.onreadystatechange = function() {
-						if (this.readyState == 4 && this.status == 200) {
-							deseneazaGrid();
-						}
-					};
-					xhttp.open("DELETE", "https://proiect-ecommerce.firebaseio.com/"+index+"/.json", true);
-					xhttp.send();
+					indexModificat=index;
+					document.querySelector(".stergere").style.display="block";
+					document.querySelector(".insert").innerHTML=listaProduse[indexModificat].nume;
+					
 				}
 
 				function adaugaProdus(){
@@ -265,6 +314,29 @@
 
 				}
 
+				function da(index) {
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+				
+							deseneazaGrid();
+							document.querySelector(".stergere").style.display="none";
+						}
+					};
+					xhttp.open("DELETE", "https://proiect-ecommerce.firebaseio.com/"+indexModificat+"/.json", true);
+					xhttp.send();
+				}
+
+				function nu() {
+					deseneazaGrid();
+					document.querySelector(".stergere").style.display="none";
+				}
+
+				function site() {
+					window.location = "proiect.html";
+				}
+
 
 				
 			
@@ -287,7 +359,13 @@
 				<input name="buton" id="buton2" type="button" value="Renunta"  onclick="renunta()" />
 			</fieldset>
 		</form>
+		<div class="stergere">
+			<h3>Esti sigur ca vrei sa stergi produsul&nbsp;<span class="insert"></span>?</h3>
+			<input type="button" id="DA" value="DA" onclick="da(this)" />&nbsp;&nbsp;
+			<input type="button" id="NU" value="NU" onclick="nu(this)" /><br />
+		</div>
 		<input type="button" class="adauga" value="Adauga produs" onclick="adaugaProdus()" />
+		<input type="button" class="site" value="SITE" onclick="site()" />
 		<div class="grid">
 		</div>
 
