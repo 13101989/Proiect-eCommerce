@@ -159,8 +159,8 @@
 				for(var i in listaProduse){
 
 					var rand = `<div class="produs" id="produs">${listaProduse[i].nume}</div>
-								<div class="produs"><input class="editeaza" id="${i}" type="button" value="Editeaza produs" onclick="editare('${i}')" /></div>
-								<div class="produs"><input class="sterge" id="${i}A" type="button" value="Sterge produs" onclick="stergere('${i}')" /></div>`
+								<div class="produs"><input class="editeaza" type="button" value="Editeaza produs" onclick="editare('${i}')" /></div>
+								<div class="produs"><input class="sterge" type="button" value="Sterge produs" onclick="stergere('${i}')" /></div>`
 
 					str+=rand;
 
@@ -204,7 +204,7 @@
 
 					event.preventDefault();
 
-					if(indexModificat==-1){
+					if(indexModificat===-1){
 
 					var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
