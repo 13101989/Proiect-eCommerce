@@ -24,7 +24,9 @@
 				text-align: center;
 				background-color: #ffffff;
 				position: fixed;
+
 			}
+
 
 			.grid-item1 {
 				text-align:left;
@@ -80,16 +82,17 @@
 				width: 65px;
 				height: 60px;
 				padding-left: 1250px;
-				padding-top: 45px;
+				padding-top: 35px;
 				z-index:-1;
 			}
+
 
 			#numarProduse {
 				background-color: #ffbffb;
 				width: 27px;
 				height: 31px;
 				margin-left: 1277px;
-				margin-top: 38px;
+				margin-top: 29px;
 				z-index:2;
 				text-align: center;
 				border-radius:10px;
@@ -108,11 +111,12 @@
 				background-color: #000000;
 				padding-top: 150px;
 				justify-content: center;
+
 				}
 
 				#bandaCos {
 					position: fixed;
-					margin-top: 7px;
+					margin-top: 0px;
 					display: none;
 					color: #ffffff;
 					background-color: #000000;
@@ -313,6 +317,30 @@
 					font-family: "Lucida Console", Monaco, monospace;
 				}
 
+
+				a {
+				text-decoration: none;
+				color: inherit;
+			}
+
+			.admin {
+				background-color: white;
+				display: block;
+				border: 2px solid black;
+				font-weight: bold;
+				margin-left: 1300px;
+				margin-top: 2px;
+				font-family: "Comic Sans MS", cursive, sans-serif;
+
+
+			}
+
+			.admin:hover {
+				background-color: black;
+				color: white;
+				cursor: pointer;
+			}
+
 .container {
   position: absolute;
   width: 200px;
@@ -388,10 +416,7 @@
   75% {transform: translate(0, -100px)} 
 }
 
-		a {
-			text-decoration: none;
-			color: inherit;
-		}
+		
 
 		</style>
 
@@ -548,6 +573,10 @@
 				}, 2000);
 
 			}
+
+			function admin() {
+				window.location = "admin.html";
+			}
 						
 
 		</script>
@@ -566,6 +595,7 @@
 			<div class="grid-item1"><img id="unde" src="wave.png" /></div>
 		 	<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
 		  	<div class="grid-item3">
+		  		<button class="admin" onclick="admin()"><i class="fas fa-lock"></i></button>
 		  		<a href="cos.html">
 		  			<i id="carucior" class="fas fa-shopping-cart fa-4x"></i>
 		  			<input type="text" id="numarProduse" value="0"></input>
