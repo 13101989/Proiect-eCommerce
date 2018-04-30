@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Administrator</title>
+
+		<style>
+
+			.grid {
+				display: grid;
+				grid-template-columns: 250px 150px 150px;
+				grid-auto-rows: 40px;
+				background-color: #ffffff;
+				border: 7px solid black;
+				text-align: center;
+				border-radius: 15px;
+				width: 550px;
+				margin-top: 20px;
+				margin-left: 390px;
+			}
+
+			.produs {
+				
+				padding-top: 8px;
+				border-bottom: 1px solid black;
+				font-weight: bold;
+			}
+
+			#produs {
+				padding-top: 12px;
+				font-size: 16px;
+			}
+
+			.editeaza {
+				background-color: #00bbff; 
+				font-weight: bold;
+				font-size: 16px;
+				border-radius: 10px;
+				outline: none;
+			}
+
+			.editeaza:hover{
+				border: 2px solid black;
+			}
+
+
+			.sterge{
+				background-color: #fc1b5f;
+				font-weight: bold;
+				font-size: 16px;
+				border-radius: 10px;
+				outline: none;
+			}
+
+			.sterge:hover{
+				border: 2px solid black;
+
+			}
+
+			#fieldset {
+				width: 520px;
+				margin-left: 390px;
+				margin-top: 20px;
+				margin-bottom: 20px;
+				border-radius: 15px;
+				border: 1px solid black;
+			}
+
+			.formular{
+				width: 520px;
+				height: 20px;
+				border-radius: 2px;
+				outline: none;
+				margin-left: 5px;
+			}
+
+			#descr {
+				vertical-align: top;
+				
+			}
+
+			#descriere{
+				height: 60px;
+			}
+
+			#form {
+				font-weight: bold;
+				display: none;
+				position: fixed;
+				background-color: #bca9a9;
+				color: white;
+				width: 1389px;
+				
+			}
+
+			.adauga {
+				background-color: #4ae255;
+				font-weight: bold;
+				font-size: 16px;
+				outline: none;
+				margin-left: 610px;
+				margin-top: 20px;
+				height: 40px;
+				width: 140px;
+			}
+
+			.adauga:hover{
+				border: 3px solid black;
+
+			}
+
+			#buton1{
+				background-color: #e2e222;
+				font-size: 16px;
+				font-weight: bold;
+				outline: none;
+				height: 30px;
+			}
+
+			#buton2{
+				background-color: black;
+				color: white;
+				outline: none;
+				font-size: 16px;
+				font-weight: bold;
+				height: 30px;
+			}
+
+			#buton1:hover{
+				border: 3px solid black;
+
+			}
+
+			#buton2:hover{
+				border: 3px solid #e2e222;
+
+			}
+			
+		</style>
+
+		<script>
+
+			var indexModificat=-1;
+
+			function deseneazaGrid() {
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+									
+				listaProduse= JSON.parse(this.responseText);
+				console.log(listaProduse);
+									
+				var grid=document.querySelector(".grid");
+				document.getElementById("form").style.display="none";
+				
+
+				var str="";
+
+				for(var i in listaProduse){
+
+					var rand = `<div class="produs" id="produs">${listaProduse[i].nume}</div>
+								<div class="produs"><input class="editeaza" id="${i}" type="button" value="Editeaza produs" onclick="editare('${i}')" /></div>
+								<div class="produs"><input class="sterge" id="${i}A" type="button" value="Sterge produs" onclick="stergere('${i}')" /></div>`
+
+					str+=rand;
+
+							}
+
+						console.log(str);
+						grid.innerHTML=str;
+					}
+				};
+
+					xhttp.open("GET", "https://proiect-ecommerce.firebaseio.com/.json", true);
+					xhttp.send();
+
+				}
+
+				function stergere(index) {
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							deseneazaGrid();
+						}
+					};
+					xhttp.open("DELETE", "https://proiect-ecommerce.firebaseio.com/"+index+"/.json", true);
+					xhttp.send();
+				}
+
+				function adaugaProdus(){
+					document.getElementById("form").style.display="block";
+					indexModificat=-1;
+
+					document.getElementById("nume").value="";
+					document.getElementById("imagine").value="";
+		            document.getElementById("descriere").value="";
+		            document.getElementById("pret").value="";
+		            document.getElementById("stoc").value="";
+
+				}
+
+				function adauga(form, event) {
+
+					event.preventDefault();
+
+					if(indexModificat==-1){
+
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+
+							deseneazaGrid();
+						}
+					};
+					xhttp.open("POST", "https://proiect-ecommerce.firebaseio.com/.json", true);
+					xhttp.send(JSON.stringify({
+						nume: document.querySelector("#nume").value,
+						imagine: document.querySelector("#imagine").value,
+	                    descriere: document.querySelector("#descriere").value,
+	                    pret: document.querySelector("#pret").value,
+	                    stoc: document.querySelector("#stoc").value,
+					}));
+
+					}else{
+
+						var xhttp = new XMLHttpRequest();
+						xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+
+							deseneazaGrid();
+						}
+					};
+					xhttp.open("PUT", "https://proiect-ecommerce.firebaseio.com/"+indexModificat+".json", true);
+					xhttp.send(JSON.stringify({
+						nume: document.querySelector("#nume").value,
+						imagine: document.querySelector("#imagine").value,
+	                    descriere: document.querySelector("#descriere").value,
+	                    pret: document.querySelector("#pret").value,
+	                    stoc: document.querySelector("#stoc").value,
+					}));
+
+					}
+				}
+
+
+				function renunta() {
+
+					deseneazaGrid();
+
+				}
+
+				function editare(index) {
+
+					var produs=listaProduse[index];
+   
+				   	document.getElementById("form").style.display="block";
+					document.querySelector("#nume").value=produs.nume;
+					document.querySelector("#imagine").value=produs.imagine;
+		            document.querySelector("#descriere").value=produs.descriere;
+		            document.querySelector("#pret").value=produs.pret;
+		            document.querySelector("#stoc").value=produs.stoc;
+
+					indexModificat=index;
+
+				}
+
+
+				
+			
+		</script>
+	</head>
+	<body onload="deseneazaGrid()">
+		<form id="form">
+			<fieldset id="fieldset">
+				<label for="nume">Nume:</label>
+				<input name="nume" id="nume" class="formular" type="text" /><br />
+				<label for="imagine">URL imagine:</label>
+				<input name="imagine" id="imagine" class="formular" type="text" /><br />
+				<label for="nume" id="descr">Descriere:</label>
+				<textarea name="descriere" id="descriere" class="formular"></textarea><br />
+				<label for="pret">Pret:</label>
+				<input name="pret" id="pret" type="text" class="formular" /><br />
+				<label for="stoc">Stoc:</label>
+				<input name="stoc" id="stoc" type="text" class="formular" /><br /><br />
+				<input name="buton" id="buton1" type="button" value="Salveaza" onclick="adauga(this, event)" />&nbsp;
+				<input name="buton" id="buton2" type="button" value="Renunta"  onclick="renunta()" />
+			</fieldset>
+		</form>
+		<input type="button" class="adauga" value="Adauga produs" onclick="adaugaProdus()" />
+		<div class="grid">
+		</div>
+
+	</body>
+</html>
