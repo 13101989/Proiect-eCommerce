@@ -102,6 +102,7 @@
 				  	overflow:hidden;
 				  	box-shadow: 3px 5px 11px #000;
 				  	outline: none;
+				  	z-index:1;
 
 				}
 
@@ -150,6 +151,7 @@
 				background-color: #ffffff;
 				position: fixed;
 				border-bottom: 1px solid black;
+				z-index:2;
 			}
 
 			.grid-item1 {
@@ -175,11 +177,13 @@
 				border-left: none;
 				position: fixed;
 				padding-left: 1100px;
+
 			}
 
 			.i{
 				width: 30px;
 				height: 30px;
+				margin-top: 100px;
 				
 			}
 
@@ -205,8 +209,8 @@
 				position: absolute;
 				width: 65px;
 				height: 60px;
-				padding-left: 1250px;
-				padding-top: 45px;
+				padding-left: 1259px;
+				padding-top: 62px;
 				z-index:-1;
 			}
 
@@ -214,8 +218,8 @@
 				background-color: #ffbffb;
 				width: 27px;
 				height: 31px;
-				margin-left: 1277px;
-				margin-top: 38px;
+				margin-left: 1287px;
+				margin-top: 55px;
 				z-index:2;
 				text-align: center;
 				border-radius:10px;
@@ -364,6 +368,7 @@
 					console.log(listaProduse);	
 					cart();	 
 
+
 				}
 			}
 
@@ -371,8 +376,9 @@
 			xhttp.send(JSON.stringify({
 					imagine: document.getElementById("imagine").src,
 					produs: document.getElementById("nume").innerHTML,
-                    cantitate: document.getElementById("plus_minus").value,
+                    cantitate: parseInt(document.getElementById("plus_minus").value),
                     pret: document.getElementById("pret").innerHTML,
+                    index: window.location.search.substring(4),
 				}));
 
 				document.getElementById("product").innerHTML = document.getElementById("nume").innerHTML;
@@ -382,8 +388,7 @@
 
 				setTimeout(function revenire () {
 					document.getElementById("bandaCos").style.display = "none";
-				}, 2000);
-
+				}, 2000);		
 			}
 
 			

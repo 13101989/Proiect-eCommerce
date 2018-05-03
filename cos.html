@@ -25,6 +25,7 @@
 				background-color: #ffffff;
 				position: fixed;
 				border-bottom: 1px solid black;
+				z-index:2;
 			}
 
 			.grid-item1 {
@@ -55,6 +56,7 @@
 			.i{
 				width: 30px;
 				height: 30px;
+				margin-top: 100px;
 				
 			}
 
@@ -80,8 +82,8 @@
 				position: absolute;
 				width: 65px;
 				height: 60px;
-				padding-left: 1250px;
-				padding-top: 45px;
+				padding-left: 1259px;
+				padding-top: 62px;
 				z-index:-1;
 			}
 
@@ -89,8 +91,8 @@
 				background-color: #ffbffb;
 				width: 27px;
 				height: 31px;
-				margin-left: 1277px;
-				margin-top: 38px;
+				margin-left: 1287px;
+				margin-top: 55px;
 				z-index:2;
 				text-align: center;
 				border-radius:10px;
@@ -99,6 +101,7 @@
 				visibility: hidden;
 				outline: none;
 				cursor: pointer;
+				z-index:-1;
 			}
 
 			#paginaDeProduse{
@@ -231,16 +234,19 @@
 			</style>
 			<script>
 
-				
+				var index = -1;
+
 				function deseneazaGrid() {
 
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-									
+
 				listaProduse= JSON.parse(this.responseText);
 				console.log(listaProduse);
+				repeat();
 				cart();
+							
 									
 				var grid=document.querySelector(".gridContainer");
 
@@ -290,6 +296,8 @@
 					xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
 					xhttp.send();
 
+
+
 				}
 
 				function cart() {
@@ -297,8 +305,6 @@
 					var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-
-						listaProduse= JSON.parse(this.responseText);
 
 							var element_count = 0;
 
@@ -369,8 +375,6 @@
 					xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 
-						listaProduse= JSON.parse(this.responseText);
-
 							var total = 0;
 							var bucati = 0;
 
@@ -395,7 +399,6 @@
 
 				function edit(index) {
 
-
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
@@ -411,6 +414,55 @@
 			xhttp.send(JSON.stringify(document.getElementById(""+index+"A").value));
 
 			}
+
+			function repeat() {
+
+				var total=0;
+
+
+				for(var i in listaProduse){
+					for(var j in listaProduse){
+
+						if (i < j && listaProduse[i].index === listaProduse[j].index) {
+							listaProduse[i].cantitate += listaProduse[j].cantitate;
+ 							listaProduse[j].cantitate=0;
+ 							total=listaProduse[i].cantitate;
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+
+
+				}}
+
+				xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+i+"/cantitate.json", true);
+				xhttp.send(JSON.stringify(total));
+
+			
+
+					for(var i in listaProduse){
+					if(listaProduse[i].cantitate===0){
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					
+					}
+				}
+				
+				xhttp.open("DELETE", "https://coscumparaturi-90c56.firebaseio.com/"+i+".json", true);
+				xhttp.send();
+				deseneazaGrid();
+				
+			}}}}}
+
+		}
+
+			window.onload=function(){
+				deseneazaGrid();
+				}
+
+
 			
 			</script>
 		</head>
