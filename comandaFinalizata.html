@@ -1,1 +1,66 @@
-.
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Comanda finalizata!</title>
+
+		<style>
+
+		
+			.felicitari {
+				font-size: 75px;
+				font-weight: bold;
+				text-align: center;
+				margin-top: 70px;
+				margin-left: 492px;
+				border: 6px solid black;
+				width: 350px;
+
+			}
+
+			.comanda{
+				font-size: 25px;	
+				text-align: center;
+				font-family: "Lucida Console", Monaco, monospace;
+			}
+
+			.site {
+				margin-left: 425px;
+				margin-top: 60px;
+				width: 500px;
+				height: 80px;
+				font-size: 50px;
+				font-weight: bold;
+				background-color: white;
+				border: 1px solid black;
+			}
+
+			.site:hover {
+				background-color: black;
+				color: white;
+			}
+
+			.wrapper{
+				border: 10px solid black;
+			}
+
+
+
+		</style>
+
+		<script>
+
+			function site() {
+					window.location = "proiect.html";
+				}
+			
+		</script>
+
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="felicitari">Felicitari!</div><br /><br /><br />
+			<div class="comanda">Comanda ta a fost finalizata cu succes.</div><br /><br /><br /><br />
+			<input type="button" class="site" value=">> Inapoi in site <<" onclick="site()" />
+		</div>
+	</body>
+</html>
