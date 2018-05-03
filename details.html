@@ -376,7 +376,7 @@
 			xhttp.send(JSON.stringify({
 					imagine: document.getElementById("imagine").src,
 					produs: document.getElementById("nume").innerHTML,
-                    cantitate: parseInt(document.getElementById("plus_minus").value),
+                    cantitate: Number(document.getElementById("plus_minus").value),
                     pret: document.getElementById("pret").innerHTML,
                     index: window.location.search.substring(4),
 				}));

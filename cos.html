@@ -229,6 +229,16 @@
 					font-size: 14px;
 				}
 
+				#produseStoc {
+					color: white;
+					font-size: 12.5px;
+					font-weight: bold;
+					background-color: red;
+					padding: 3px;
+					position: relative;
+					display:none;
+				}
+
 
 
 			</style>
@@ -263,7 +273,10 @@
 
 					var rand = `<div class="cell1"><img class="casti" src="${listaProduse[i].imagine}" /></div>
 								<div class="cell2"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
-								<div class="cell2"><input type="number" class="plus_minus" id="${i}A" min="1" max="10" value="${listaProduse[i].cantitate}" onchange="edit('${i}')" /></div>
+								<div class="cell2">
+									<input type="number" class="plus_minus" id="${i}A" min="1" max="10" value="${listaProduse[i].cantitate}" onchange="edit('${i}')" /><br />
+									<span id="produseStoc">Produse pe stoc: 10</span>
+								</div>
 								<div class="cell2">${listaProduse[i].pret}</div>
 								<div class="cell2"><a href="#" class="x" onclick="elimina('${i}')">X</a></div>`
 
@@ -289,6 +302,16 @@
 						grid.innerHTML=str;
 
 						}
+
+						for(var i in listaProduse){
+						if(listaProduse[i].cantitate > 10) {
+							document.getElementById("produseStoc").style.display="block";
+						}else{
+							document.getElementById("produseStoc").style.display="none";
+							}
+
+						}
+
 					}
 
 				};
@@ -411,7 +434,7 @@
 			}
 
 			xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+index+"/cantitate.json", true);
-			xhttp.send(JSON.stringify(document.getElementById(""+index+"A").value));
+			xhttp.send(JSON.stringify(parseInt(document.getElementById(""+index+"A").value)));
 
 			}
 
@@ -458,6 +481,26 @@
 
 		}
 
+		function continuaPlata() {
+
+			var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+
+					for(var i in listaProduse){
+					if(!(listaProduse[i].cantitate > 10 )){
+				   window.location="comandaFinalizata.html";
+
+						}}
+					}
+				}
+				
+				xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
+				xhttp.send();
+				
+				}
+
+
 			window.onload=function(){
 				deseneazaGrid();
 				}
@@ -485,7 +528,7 @@
 			</div>
 			<h1 class="total" id="total">Total<span class="tva">(include TVA)</span>:</h1>
 			<h1 class="total" id="total1"></h1>
-			<button class="total" id="total2">Continua cu plata</button>
+			<button class="total" id="total2" onclick="continuaPlata()">Continua cu plata</button>
 		</div>
 		</body>
 	</html>
