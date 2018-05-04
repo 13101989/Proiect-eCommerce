@@ -282,6 +282,8 @@
 
 					str+=rand;
 
+
+
 							}
 
 						console.log(str);
@@ -461,23 +463,23 @@
 				xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+i+"/cantitate.json", true);
 				xhttp.send(JSON.stringify(total));
 
+			}}}
 			
-
 					for(var i in listaProduse){
 					if(listaProduse[i].cantitate===0){
 
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					
+					deseneazaGrid();
 					}
 				}
 				
 				xhttp.open("DELETE", "https://coscumparaturi-90c56.firebaseio.com/"+i+".json", true);
 				xhttp.send();
-				deseneazaGrid();
 				
-			}}}}}
+				
+			}}
 
 		}
 
