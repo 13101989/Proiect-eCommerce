@@ -229,7 +229,7 @@
 					font-size: 14px;
 				}
 
-				#produseStoc {
+				.produseStoc {
 					color: white;
 					font-size: 12.5px;
 					font-weight: bold;
@@ -244,8 +244,6 @@
 			</style>
 			<script>
 
-				var index = -1;
-
 				function deseneazaGrid() {
 
 				var xhttp = new XMLHttpRequest();
@@ -256,6 +254,7 @@
 				console.log(listaProduse);
 				repeat();
 				cart();
+
 							
 									
 				var grid=document.querySelector(".gridContainer");
@@ -275,7 +274,7 @@
 								<div class="cell2"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
 								<div class="cell2">
 									<input type="number" class="plus_minus" id="${i}A" min="1" max="10" value="${listaProduse[i].cantitate}" onchange="edit('${i}')" /><br />
-									<span id="produseStoc">Produse pe stoc: 10</span>
+									<span id="${i}B" class="produseStoc">Produse pe stoc: 10</span>
 								</div>
 								<div class="cell2">${listaProduse[i].pret}</div>
 								<div class="cell2"><a href="#" class="x" onclick="elimina('${i}')">X</a></div>`
@@ -304,16 +303,7 @@
 						grid.innerHTML=str;
 
 						}
-
-						for(var i in listaProduse){
-						if(listaProduse[i].cantitate > 10) {
-							document.getElementById("produseStoc").style.display="block";
-						}else{
-							document.getElementById("produseStoc").style.display="none";
-							}
-
-						}
-
+						stoc();
 					}
 
 				};
@@ -322,6 +312,21 @@
 					xhttp.send();
 
 
+
+				}
+
+
+				function stoc() {
+
+					for(var j in listaProduse){
+							
+						if(listaProduse[j].cantitate > 10) {
+							document.querySelector("#"+j+"B").style.display="block";
+						}else{
+							document.querySelector("#"+j+"B").style.display="none";
+							}
+
+						}
 
 				}
 
@@ -453,6 +458,7 @@
  							listaProduse[j].cantitate=0;
  							total=listaProduse[i].cantitate;
 
+
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
@@ -463,7 +469,7 @@
 				xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+i+"/cantitate.json", true);
 				xhttp.send(JSON.stringify(total));
 
-			}}}
+			}}
 			
 					for(var i in listaProduse){
 					if(listaProduse[i].cantitate===0){
@@ -479,7 +485,7 @@
 				xhttp.send();
 				
 				
-			}}
+			}}}
 
 		}
 
