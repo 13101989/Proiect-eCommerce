@@ -273,18 +273,24 @@
 
 				for(var i in listaProduse){
 
-					var rand = `<div class="cell1"><img class="casti" src="${listaProduse[i].imagine}" /></div>
-								<div class="cell2"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
-								<div class="cell2">
+					var rand = `<div class="cell1" id="${i}C"><img class="casti" src="${listaProduse[i].imagine}" /></div>
+								<div class="cell2" id="${i}D"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
+								<div class="cell2" id="${i}E">
 									<input type="number" class="plus_minus" id="${i}A" min="1" max="10" value="${listaProduse[i].cantitate}" onchange="edit('${i}')" /><br />
 									<span id="${i}B" class="produseStoc">Produse pe stoc: 10</span>
 								</div>
-								<div class="cell2">${listaProduse[i].pret}</div>
-								<div class="cell2"><a href="#" class="x" onclick="elimina('${i}')">X</a></div>`
+								<div id="${i}F" class="cell2">${listaProduse[i].pret}</div>
+								<div class="cell2" id="${i}G"><a href="#" class="x" onclick="elimina('${i}')">X</a></div>`
 
 					str+=rand;
 
-
+					if(listaProduse[i].cantitate===0) {
+						document.getElementById(""+i+"C").style.display="none";
+						document.getElementById(""+i+"D").style.display="none";
+						document.getElementById(""+i+"E").style.display="none";
+						document.getElementById(""+i+"F").style.display="none";
+						document.getElementById(""+i+"G").style.display="none";
+					}
 
 							}
 
@@ -471,9 +477,9 @@
 				xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+i+"/cantitate.json", true);
 				xhttp.send(JSON.stringify(total));
 
-			}}
+			}}}
 			
-					
+					for(var i in listaProduse){
 					if(listaProduse[i].cantitate===0){
 
 				var xhttp = new XMLHttpRequest();
