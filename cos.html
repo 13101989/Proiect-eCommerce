@@ -129,6 +129,7 @@
 					text-align: center;
 					background-color: #ffffff;
 					padding-left: 70px;
+				
 
 				}
 
@@ -246,6 +247,7 @@
 
 				function deseneazaGrid() {
 
+
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
@@ -258,6 +260,7 @@
 							
 									
 				var grid=document.querySelector(".gridContainer");
+
 
 					var str=`<div class="gridContainer">
 							<div class="cell">Imagine</div>
@@ -304,14 +307,13 @@
 
 						}
 						stoc();
+
 					}
 
 				};
 
 					xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
 					xhttp.send();
-
-
 
 				}
 
@@ -343,7 +345,6 @@
 						        element_count += Number(listaProduse[i].cantitate);
 						    }    
 						}
-
 
 				 		document.getElementById("numarProduse").style.visibility="visible";
 				 		document.getElementById("numarProduse").value= element_count;
@@ -416,6 +417,7 @@
 
 								bucati = bucati + 0.19*bucati;
 
+
 						document.getElementById("total1").innerHTML=bucati.toFixed(1)+"$";
 
 
@@ -424,7 +426,7 @@
 				
 				xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
 				xhttp.send();
-
+				
 				}
 
 				function edit(index) {
@@ -487,6 +489,7 @@
 			}}
 
 			deseneazaGrid();
+			
 		}
 
 		function continuaPlata() {
@@ -508,6 +511,8 @@
 				
 				}
 
+				
+				
 			
 			</script>
 		</head>
