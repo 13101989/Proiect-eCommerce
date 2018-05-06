@@ -245,8 +245,6 @@
 			</style>
 			<script>
 
-				var qwerty=false;
-
 				function deseneazaGrid() {
 
 
@@ -332,10 +330,8 @@
 							
 						if(listaProduse[j].cantitate > 10) {
 							document.querySelector("#"+j+"B").style.display="block";
-							qwerty=true;
 						}else{
 							document.querySelector("#"+j+"B").style.display="none";
-						
 							}
 
 						}
@@ -448,17 +444,14 @@
 				   listaProduse = JSON.parse(this.responseText);
 					console.log(listaProduse);	
 
-					deseneazaGrid();
-					location.reload();
+					deseneazaGrid();	  
 				}
 			}
 
 			xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+index+"/cantitate.json", true);
 			xhttp.send(JSON.stringify(parseInt(document.getElementById(""+index+"A").value)));
 
-				
 			}
-
 
 			function repeat() {
 
@@ -505,13 +498,23 @@
 			
 		}
 
-
 		function continuaPlata() {
 
-					if(qwerty===false){
+			var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
 
+					for(var i in listaProduse){
+					if(!(listaProduse[i].cantitate > 10 )){
 				   window.location="comandaFinalizata.html";
-						}
+
+						}}
+					}
+				}
+				
+				xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
+				xhttp.send();
+				
 				}
 
 				
