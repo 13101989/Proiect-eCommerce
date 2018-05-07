@@ -9,14 +9,11 @@
 				margin: 0px;
 				padding: 0px;
 			}
-
 			.wrapper {
 				  margin:0 auto;
 				  max-width: 1389px;
 				  justify-content: center;  
 				}
-
-
 			.top{
 				display: grid;
 				grid-template-columns: 1389px;
@@ -27,13 +24,11 @@
 				border-bottom: 1px solid black;
 				z-index:2;
 			}
-
 			.grid-item1 {
 				text-align:left;
 				border-right: none;
 				position: fixed;
 			}
-
 			.grid-item2 {
 				text-align:left;
 				border-right: none;
@@ -41,26 +36,21 @@
 				position: fixed;
 				padding-left: 435px;
 			}
-
 			.grid-item3 {
 				border-left: none;
 				position: fixed;
 			}
-
 			.grid-item4 {
 				border-left: none;
 				position: fixed;
 				padding-left: 1100px;
 			}
-
 			.i{
 				width: 30px;
 				height: 30px;
 				margin-top: 100px;
 				
 			}
-
-
 			#sunet {
 				position: absolute;
 				width: 240px;
@@ -68,16 +58,13 @@
 				padding-left: 115px;
 				padding-top: 1px;
 			}
-
 			#unde {
 				position: absolute;
 				width: 150px;
 				height: 110px;
 				padding-left: 130px;
 				padding-top: 15px;
-
 			}
-
 			#carucior {
 				position: absolute;
 				width: 65px;
@@ -86,7 +73,6 @@
 				padding-top: 62px;
 				z-index:-1;
 			}
-
 			#numarProduse {
 				background-color: #ffbffb;
 				width: 27px;
@@ -103,7 +89,6 @@
 				cursor: pointer;
 				z-index:-1;
 			}
-
 			#paginaDeProduse{
 					height: 40px;
 					font-size: 15px;
@@ -114,12 +99,9 @@
 					margin-top: 20px;
 					margin-left: 1020px;
 				}
-
 				#paginaDeProduse:hover {
 					border: 3px solid black;
-
 				}
-
 				.gridContainer{
 					display: grid;
 					grid-template-columns: 190px 200px 160px 170px 60px;
@@ -130,54 +112,44 @@
 					background-color: #ffffff;
 					padding-left: 70px;
 				
-
 				}
-
 				.cell {
 					padding-top: 5px;
 					background-color: #000000;
 					color: #ffffff;
 				}
-
 				.cell1 {
 					border: 1px solid black;
 					padding-top: 10px;
 				}
-
 				.cell2 {
 					border: 1px solid black;
 					padding-top: 38px;
 					font-size: 18px;
 					font-family: "Lucida Console", Monaco, monospace;	
 				}
-
 				.casti{
 					width: 80px;
 					height: 85px;
 				}
-
 				.plus_minus {
 					width: 35px;
-					height: 20px;
+					height: 30px;
 					text-align:center;
-					transform: scale(1.3);
+					transform: scale(1.7);
 				}
-
 				a {
 					text-decoration: none;
 					color: inherit;
 				}
-
 				.x:hover {
 					color: red;
 					text-decoration: underline;
 				}
-
 				.produs:hover {
 					color: blue;
 					text-decoration: underline;
 				}
-
 				#nu {
 					text-align: center;
 					font-size: 25px;
@@ -186,17 +158,14 @@
 					display: block;
 					width: 500px;
 				}
-
 				.total{
 					margin-left: 1020px;
 					
 				}
-
 				#total{
 					margin-top: 10px;
 					font-family: "Lucida Console", Monaco, monospace;
 				}
-
 				#total2{
 					background-color: white;
 					font-weight: bold;
@@ -209,7 +178,6 @@
 					position: relative;
 					transition: all 500ms ease; 
 				}
-
 				#total2:before {
 					content:'';   
     				position: absolute;  
@@ -220,16 +188,13 @@
 					background: green;
 					transition: all 1s ease;
 				} 
-
 				#total2:hover:before {
 					width: 100%;
 					opacity: 0.5;
 				}
-
 				.tva {
 					font-size: 14px;
 				}
-
 				.produseStoc {
 					color: white;
 					font-size: 12.5px;
@@ -239,29 +204,19 @@
 					position: relative;
 					display:none;
 				}
-
-
-
 			</style>
 			<script>
-
 				function deseneazaGrid() {
-
-
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-
 				listaProduse= JSON.parse(this.responseText);
 				console.log(listaProduse);
 				repeat();
 				cart();
-
 							
 									
 				var grid=document.querySelector(".gridContainer");
-
-
 					var str=`<div class="gridContainer">
 							<div class="cell">Imagine</div>
 							<div class="cell">Produs</div>
@@ -270,9 +225,7 @@
 							<div class="cell">Elimina</div>`
 				
 				if (listaProduse) {
-
 				for(var i in listaProduse){
-
 					var rand = `<div class="cell1" id="${i}C"><img class="casti" src="${listaProduse[i].imagine}" /></div>
 								<div class="cell2" id="${i}D"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
 								<div class="cell2" id="${i}E">
@@ -281,9 +234,7 @@
 								</div>
 								<div id="${i}F" class="cell2">${listaProduse[i].pret}</div>
 								<div class="cell2" id="${i}G"><a href="#" class="x" onclick="elimina('${i}')">X</a></div>`
-
 					str+=rand;
-
 					if(listaProduse[i].cantitate===0) {
 						document.getElementById(""+i+"C").style.display="none";
 						document.getElementById(""+i+"D").style.display="none";
@@ -291,41 +242,27 @@
 						document.getElementById(""+i+"F").style.display="none";
 						document.getElementById(""+i+"G").style.display="none";
 					}
-
 							}
-
 						console.log(str);
 						grid.innerHTML=str;
 						total();
-
 						}else{
 							var str= "";
 							var rand = `<div id="nu">Nu ati selectat nici un produs.</div>`
-
 							document.getElementById("total").style.display="none";
 							document.getElementById("total2").style.display="none";
 							document.getElementById("total1").style.display="none";
-
 						str+=rand;
-
 						console.log(str);
 						grid.innerHTML=str;
-
 						}
 						stoc();
-
 					}
-
 				};
-
 					xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
 					xhttp.send();
-
 				}
-
-
 				function stoc() {
-
 					for(var j in listaProduse){
 							
 						if(listaProduse[j].cantitate > 10) {
@@ -333,38 +270,27 @@
 						}else{
 							document.querySelector("#"+j+"B").style.display="none";
 							}
-
 						}
-
 				}
-
 				function cart() {
-
 					var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-
 							var element_count = 0;
-
 						for(var i in listaProduse){
 						    if(listaProduse.hasOwnProperty(i)){
 						        element_count += Number(listaProduse[i].cantitate);
 						    }    
 						}
-
 				 		document.getElementById("numarProduse").style.visibility="visible";
 				 		document.getElementById("numarProduse").value= element_count;
-
 					}
 				}
 				
 				xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
 				xhttp.send();
-
 				}
-
 				function elimina(index){
-
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
@@ -376,26 +302,19 @@
 				xhttp.send();
 				
 				}
-
 				function back(index){
-
-
 					var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 				   
 				   var listaProduse = JSON.parse(this.responseText);
 				   console.log(listaProduse);
-
 				   var produs=document.getElementById(""+index+"").innerHTML;
-
 				   for(var i in listaProduse){
-
 				   	if (produs===listaProduse[i].nume) {
 				   		index=i;
 				   		console.log(produs);
 				   	}
-
 				   	 window.location = "details.html?id="+index+"";
   
 				}}
@@ -403,30 +322,20 @@
 			
 			xhttp.open("GET", "https://proiect-ecommerce.firebaseio.com/.json", true);
 			xhttp.send();
-
 				}
-
 				function total() {
-
 					var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
-
 							var total = 0;
 							var bucati = 0;
-
 						for(var i in listaProduse){
 						    
 						        total = parseInt(listaProduse[i].pret) * Number(listaProduse[i].cantitate);
 						     	bucati += total;
 						}
-
 								bucati = bucati + 0.19*bucati;
-
-
 						document.getElementById("total1").innerHTML=bucati.toFixed(1)+"$";
-
-
 					}
 				}
 				
@@ -434,54 +343,39 @@
 				xhttp.send();
 				
 				}
-
 				function edit(index) {
-
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 				   
 				   listaProduse = JSON.parse(this.responseText);
 					console.log(listaProduse);	
-
 					deseneazaGrid();	  
 				}
 			}
-
 			xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+index+"/cantitate.json", true);
 			xhttp.send(JSON.stringify(parseInt(document.getElementById(""+index+"A").value)));
 
+			
 			}
-
 			function repeat() {
-
 				var total=0;
-
-
 				for(var i in listaProduse){
 					for(var j in listaProduse){
-
 						if (i < j && listaProduse[i].index === listaProduse[j].index) {
 							listaProduse[i].cantitate += listaProduse[j].cantitate;
  							listaProduse[j].cantitate=0;
  							total=listaProduse[i].cantitate;
-
-
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-
-
 				}}
-
 				xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+i+"/cantitate.json", true);
 				xhttp.send(JSON.stringify(total));
-
 			}}}
 			
 					for(var i in listaProduse){
 					if(listaProduse[i].cantitate===0){
-
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
@@ -493,21 +387,16 @@
 				xhttp.send();
 					
 			}}
-
 			deseneazaGrid();
 			
 		}
-
 		function continuaPlata() {
-
 			var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-
 					for(var i in listaProduse){
 					if(!(listaProduse[i].cantitate > 10 )){
 				   window.location="comandaFinalizata.html";
-
 						}}
 					}
 				}
@@ -516,7 +405,6 @@
 				xhttp.send();
 				
 				}
-
 				
 				
 			
