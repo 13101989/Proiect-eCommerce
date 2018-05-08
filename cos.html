@@ -275,210 +275,254 @@
 					var str= "";
 					var rand = `<div id="nu">Nu ati selectat nici un produs.</div>`
 					document.getElementById("total").style.display="none";
-					document.getElementById("total2").style.display="none";
+					document.querySelector(".total2").style.display="none";
 					document.getElementById("total1").style.display="none";
 					str+=rand;
 					console.log(str);
 					grid.innerHTML=str;
 				}
 				stoc();
+				style();
+				
 			}
 		};
 		xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
 		xhttp.send();
+
+		
 	}
 	function stoc() {
-
-		var continua = document.querySelector(".total2");
 
 		for(var j in listaProduse){
 
 			if(listaProduse[j].cantitate > 10) {
 				document.querySelector("#"+j+"B").style.display="block";
-				continua.classList.remove("total2");
-				continua.classList.add("total3");
+				
 			}else{
 				document.querySelector("#"+j+"B").style.display="none";
-				continua.classList.remove("total3");
+				
+			}
+		}
+
+	}
+
+	function style(){
+
+		var continua = document.getElementById("cash");
+	
+		var plata=true;
+
+		for(var i in listaProduse){
+			if(listaProduse[i].cantitate > 10 ){
+				plata=false;
+				break;
+			}}
+
+			if (plata === false){
+				continua.classList.remove("total2");	
+				continua.classList.add("total3");
+										
+			}else{
+				continua.classList.remove("total3");	
 				continua.classList.add("total2");
+				continua.innerHTML="Continua cu plata";
 			}
 		}
-
-	}
-	function cart() {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				var element_count = 0;
-				for(var i in listaProduse){
-					if(listaProduse.hasOwnProperty(i)){
-						element_count += Number(listaProduse[i].cantitate);
-					}    
-				}
-				document.getElementById("numarProduse").style.visibility="visible";
-				document.getElementById("numarProduse").value= element_count;
-			}
-		}
-
-		xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
-		xhttp.send();
-	}
-	function elimina(index){
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				deseneazaGrid();
-			}
-		}
-
-		xhttp.open("DELETE", "https://coscumparaturi-90c56.firebaseio.com/"+index+".json", true);
-		xhttp.send();
-
-	}
-	function back(index){
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-
-				var listaProduse = JSON.parse(this.responseText);
-				console.log(listaProduse);
-				var produs=document.getElementById(""+index+"").innerHTML;
-				for(var i in listaProduse){
-					if (produs===listaProduse[i].nume) {
-						index=i;
-						console.log(produs);
-					}
-					window.location = "details.html?id="+index+"";
-
-				}}
-			}
-			
-			xhttp.open("GET", "https://proiect-ecommerce.firebaseio.com/.json", true);
-			xhttp.send();
-		}
-		function total() {
+		function cart() {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					var total = 0;
-					var bucati = 0;
+					var element_count = 0;
 					for(var i in listaProduse){
-
-						total = parseInt(listaProduse[i].pret) * Number(listaProduse[i].cantitate);
-						bucati += total;
+						if(listaProduse.hasOwnProperty(i)){
+							element_count += Number(listaProduse[i].cantitate);
+						}    
 					}
-					bucati = bucati + 0.19*bucati;
-					document.getElementById("total1").innerHTML=bucati.toFixed(1)+"$";
+					document.getElementById("numarProduse").style.visibility="visible";
+					document.getElementById("numarProduse").value= element_count;
 				}
 			}
 
 			xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
 			xhttp.send();
+		}
+		function elimina(index){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					deseneazaGrid();
+				}
+			}
+
+			xhttp.open("DELETE", "https://coscumparaturi-90c56.firebaseio.com/"+index+".json", true);
+			xhttp.send();
 
 		}
-		function edit(index) {
+		function back(index){
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 
-					listaProduse = JSON.parse(this.responseText);
-					console.log(listaProduse);	
-					deseneazaGrid();	  
-				}
-			}
-			xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+index+"/cantitate.json", true);
-			xhttp.send(JSON.stringify(parseInt(document.getElementById(""+index+"A").value)));
-		}
-		function repeat() {
-			var changed=false;
-			for(var i in listaProduse){
-				for(var j in listaProduse){
-					if (i < j && listaProduse[i].index === listaProduse[j].index) {
-						listaProduse[i].cantitate += listaProduse[j].cantitate;
-
-						listaProduse[j].cantitate=0;
-						changed=true;
-
-					}
-				}
-			}
-			if(changed){
-				for(var i in listaProduse){
-					if(listaProduse[i].cantitate===0){
-						var xhttp = new XMLHttpRequest();
-						xhttp.onreadystatechange = function() {
-							if (this.readyState == 4 && this.status == 200) {
-
-							}
-						}
-
-						xhttp.open("DELETE", "https://coscumparaturi-90c56.firebaseio.com/"+i+".json", true);
-						xhttp.send();
-
-					}else{
-						var xhttp = new XMLHttpRequest();
-						xhttp.onreadystatechange = function() {
-							if (this.readyState == 4 && this.status == 200) {
-							}
-						}
-						xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+i+"/cantitate.json", true);
-						xhttp.send(JSON.stringify(listaProduse[i].cantitate));
-					}
-				}
-				deseneazaGrid();
-			}
-			return changed;
-
-		}
-		function continuaPlata() {
-
-			var plata=true;
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
+					var listaProduse = JSON.parse(this.responseText);
+					console.log(listaProduse);
+					var produs=document.getElementById(""+index+"").innerHTML;
 					for(var i in listaProduse){
-						if(listaProduse[i].cantitate > 10 ){
-							plata=false;
-							break;
-						}}
-					
-					if (plata !== false){
-						window.location="comandaFinalizata.html";
-						
+						if (produs===listaProduse[i].nume) {
+							index=i;
+							console.log(produs);
+						}
+						window.location = "details.html?id="+index+"";
+
+					}}
+				}
+
+				xhttp.open("GET", "https://proiect-ecommerce.firebaseio.com/.json", true);
+				xhttp.send();
+			}
+			function total() {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						var total = 0;
+						var bucati = 0;
+						for(var i in listaProduse){
+
+							total = parseInt(listaProduse[i].pret) * Number(listaProduse[i].cantitate);
+							bucati += total;
+						}
+						bucati = bucati + 0.19*bucati;
+						document.getElementById("total1").innerHTML=bucati.toFixed(1)+"$";
 					}
 				}
+
+				xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
+				xhttp.send();
+
 			}
-		
+			function edit(index) {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
 
-		xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
-		xhttp.send();
+						listaProduse = JSON.parse(this.responseText);
+						console.log(listaProduse);	
+						deseneazaGrid();	  
+					}
+				}
+				xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+index+"/cantitate.json", true);
+				xhttp.send(JSON.stringify(parseInt(document.getElementById(""+index+"A").value)));
+			}
+			function repeat() {
+				var changed=false;
+				for(var i in listaProduse){
+					for(var j in listaProduse){
+						if (i < j && listaProduse[i].index === listaProduse[j].index) {
+							listaProduse[i].cantitate += listaProduse[j].cantitate;
 
-	}
+							listaProduse[j].cantitate=0;
+							changed=true;
+
+						}
+					}
+				}
+				if(changed){
+					for(var i in listaProduse){
+						if(listaProduse[i].cantitate===0){
+							var xhttp = new XMLHttpRequest();
+							xhttp.onreadystatechange = function() {
+								if (this.readyState == 4 && this.status == 200) {
+
+								}
+							}
+
+							xhttp.open("DELETE", "https://coscumparaturi-90c56.firebaseio.com/"+i+".json", true);
+							xhttp.send();
+
+						}else{
+							var xhttp = new XMLHttpRequest();
+							xhttp.onreadystatechange = function() {
+								if (this.readyState == 4 && this.status == 200) {
+								}
+							}
+							xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+i+"/cantitate.json", true);
+							xhttp.send(JSON.stringify(listaProduse[i].cantitate));
+						}
+					}
+					deseneazaGrid();
+				}
+				return changed;
+
+			}
+			function continuaPlata() {
+				
+				var plata=true;
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						for(var i in listaProduse){
+							if(listaProduse[i].cantitate > 10 ){
+								plata=false;
+								break;
+							
+							}}
+
+							if (plata !== false){
+								window.location="comandaFinalizata.html";
+							}
+						}
+					}
+
+
+					xhttp.open("GET", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
+					xhttp.send();
+
+				}
+
+				function continuaPlata2() {
+				
+				var plata=true;
+				var continua = document.getElementById("cash");
+						for(var i in listaProduse){
+							if(listaProduse[i].cantitate > 10 ){
+								plata=false;
+								break;
+							
+							}}
+
+							if (plata === false){
+								continua.innerHTML="Stoc Insuficient!";
+							}else{
+
+							}
+
+				}
+
+			
 
 
 
-</script>
-</head>
+			</script>
+		</head>
 
-<body onload="deseneazaGrid()">
-	<div class="wrapper">
-		<div class="top">
-			<div class="grid-item1"><img id="unde" src="wave.png" /></div>
-			<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
-			<div class="grid-item3">
-				<a href="cos.html">
-					<i id="carucior" class="fas fa-shopping-cart fa-4x"></i>
-					<input type="text" id="numarProduse" value="0"></input>
-				</a>
-			</div><br /><br /><br /><br /><br />
-			<div class="grid-item4"><a href="https://www.instagram.com/lendmeurears.au/"><img class="i" src="fi-instagram.png" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/lendmeurearsaustralia/"><img class="i" src="fi-facebook.png" /></a>&nbsp;&nbsp;<a href="https://twitter.com/hifiheadphones"><img class="i" src="fi-tumblr.png" /></a></div>
-		</div><br /><br /><br /><br /><br /><br /><br /><br />
-		<a href="proiect.html"><button id="paginaDeProduse"><i class="fas fa-arrow-left">&nbsp;&nbsp;Inapoi la pagina de produse</i></button></a><br />
-		<div class="gridContainer">
-		</div>
-		<h1 class="total" id="total">Total<span class="tva">(include TVA)</span>:</h1>
-		<h1 class="total" id="total1"></h1>
-		<button class="total2" onclick="continuaPlata()">Continua cu plata</button>
-	</div>
-</body>
-</html>
+		<body onload="deseneazaGrid()">
+			<div class="wrapper">
+				<div class="top">
+					<div class="grid-item1"><img id="unde" src="wave.png" /></div>
+					<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
+					<div class="grid-item3">
+						<a href="cos.html">
+							<i id="carucior" class="fas fa-shopping-cart fa-4x"></i>
+							<input type="text" id="numarProduse" value="0"></input>
+						</a>
+					</div><br /><br /><br /><br /><br />
+					<div class="grid-item4"><a href="https://www.instagram.com/lendmeurears.au/"><img class="i" src="fi-instagram.png" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/lendmeurearsaustralia/"><img class="i" src="fi-facebook.png" /></a>&nbsp;&nbsp;<a href="https://twitter.com/hifiheadphones"><img class="i" src="fi-tumblr.png" /></a></div>
+				</div><br /><br /><br /><br /><br /><br /><br /><br />
+				<a href="proiect.html"><button id="paginaDeProduse"><i class="fas fa-arrow-left">&nbsp;&nbsp;Inapoi la pagina de produse</i></button></a><br />
+				<div class="gridContainer">
+				</div>
+				<h1 class="total" id="total">Total<span class="tva">(include TVA)</span>:</h1>
+				<h1 class="total" id="total1"></h1>
+				<button class="total2" id="cash" onclick="continuaPlata()" onmouseover="continuaPlata2()" >Continua cu plata</button>
+			</div>
+		</body>
+		</html>
