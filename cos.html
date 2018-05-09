@@ -127,17 +127,21 @@
 		padding-top: 38px;
 		font-size: 18px;
 		font-family: "Lucida Console", Monaco, monospace;	
+		text-align:center;
+	}
+	.cell3 {
+		border: 1px solid black;
+		padding-top: 33px;
+		font-size: 18px;
+		font-family: "Lucida Console", Monaco, monospace;	
+		text-align:center;
+		
 	}
 	.casti{
 		width: 80px;
 		height: 85px;
 	}
-	.plus_minus {
-		width: 35px;
-		height: 20px;
-		text-align:center;
-		transform: scale(1.3);
-	}
+
 	a {
 		text-decoration: none;
 		color: inherit;
@@ -163,11 +167,12 @@
 
 	}
 	#total{
-		margin-top: 10px;
+		margin-top: 20px;
 		font-family: "Lucida Console", Monaco, monospace;
 	}
 	.total2{
 		margin-left: 1020px;
+		margin-top:20px;
 		background-color: white;
 		font-weight: bold;
 		height: 50px;
@@ -196,6 +201,7 @@
 
 	.total3{
 		margin-left: 1020px;
+		margin-top:20px;
 		background-color: white;
 		font-weight: bold;
 		height: 50px;
@@ -233,6 +239,38 @@
 		position: relative;
 		display:none;
 	}
+
+
+	.cant .fas{
+		cursor:pointer;
+		position:absolute;
+		margin-left:-15px;
+		margin-top:2px;
+		padding:4px;
+		border-left:1px solid #e2e2e0;
+		border-right:1px solid #e2e2e0;
+	}
+
+
+	.plus_minus {
+		width: 20px;
+		height: 20px;
+		text-align:center;
+		transform: scale(1.1);
+		margin-left:10px;
+		border:0px;
+		font-size:15px;
+		
+	}
+
+	.cant{
+		margin-right:35px;
+		margin-left:30px;
+		padding-left:10px;
+		padding-right:0px;
+	}
+
+
 </style>
 <script>
 
@@ -260,10 +298,12 @@
 					for(var i in listaProduse){
 						var rand = `<div class="cell1" id="${i}C"><img class="casti" src="${listaProduse[i].imagine}" /></div>
 						<div class="cell2" id="${i}D"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
-						<div class="cell2" id="${i}E">
-						<i class="far fa-plus-square" onclick="plus('${i}')"></i>
-						<input type="number" class="plus_minus" id="${i}A" min="1" max="10" value="${listaProduse[i].cantitate}" onchange="edit('${i}')" />
-						<i class="far fa-minus-square" onclick="minus('${i}')"></i>
+						<div class="cell3" id="${i}E">
+						<div class="cant">
+							<i class="fas fa-plus fa-xs" onclick="plus('${i}')"></i>
+							<input type="text" class="plus_minus" id="${i}A" value="${listaProduse[i].cantitate}" onchange="edit('${i}')" />&nbsp;&nbsp;
+							<i class="fas fa-minus fa-xs" onclick="minus('${i}')"></i>
+						</div>
 						<span id="${i}B" class="produseStoc">Produse pe stoc: 10</span>
 						</div>
 						<div id="${i}F" class="cell2">${listaProduse[i].pret}</div>
@@ -300,6 +340,7 @@
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
+
 				deseneazaGrid();
 			}
 		}
@@ -310,15 +351,19 @@
 
 	function minus(index) {
 
+		if(listaProduse[index].cantitate>1){
+				
+
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
+				
 				deseneazaGrid();	  
 			}
 		}
 		xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+index+"/cantitate.json", true);
 		xhttp.send(JSON.stringify(listaProduse[index].cantitate-1));
-		
+		}
 	}
 
 	function stoc() {
