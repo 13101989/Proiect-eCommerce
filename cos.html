@@ -245,7 +245,7 @@
 		cursor:pointer;
 		position:absolute;
 		margin-left:-15px;
-		margin-top:2px;
+		margin-top:1px;
 		padding:4px;
 		border-left:1px solid #e2e2e0;
 		border-right:1px solid #e2e2e0;
@@ -260,6 +260,7 @@
 		margin-left:10px;
 		border:0px;
 		font-size:15px;
+		font-family: "Lucida Console", Monaco, monospace;
 		
 	}
 
@@ -300,9 +301,9 @@
 						<div class="cell2" id="${i}D"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
 						<div class="cell3" id="${i}E">
 						<div class="cant">
-							<i class="fas fa-plus fa-xs" onclick="plus('${i}')"></i>
-							<input type="text" class="plus_minus" id="${i}A" value="${listaProduse[i].cantitate}" onchange="edit('${i}')" />&nbsp;&nbsp;
-							<i class="fas fa-minus fa-xs" onclick="minus('${i}')"></i>
+						<i class="fas fa-plus fa-xs" onclick="plus('${i}')"></i>
+						<input type="text" class="plus_minus" id="${i}A" value="${listaProduse[i].cantitate}" onchange="edit('${i}')" onkeypress="cheie('${i}',event)" />&nbsp;&nbsp;
+						<i class="fas fa-minus fa-xs" onclick="minus('${i}')"></i>
 						</div>
 						<span id="${i}B" class="produseStoc">Produse pe stoc: 10</span>
 						</div>
@@ -335,6 +336,20 @@
 
 	}
 
+	function cheie(index,e) {
+
+		for(var i in listaProduse){
+
+		var editare=document.getElementById(""+index+"A").value;
+
+		if(e.key >= "1" && e.key <= "9") {
+
+		}else {
+			e.preventDefault();
+			editare="1";
+		}}
+	}
+
 	function plus(index) {
 
 		var xhttp = new XMLHttpRequest();
@@ -352,17 +367,17 @@
 	function minus(index) {
 
 		if(listaProduse[index].cantitate>1){
-				
 
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				
-				deseneazaGrid();	  
+
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+
+					deseneazaGrid();	  
+				}
 			}
-		}
-		xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+index+"/cantitate.json", true);
-		xhttp.send(JSON.stringify(listaProduse[index].cantitate-1));
+			xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+index+"/cantitate.json", true);
+			xhttp.send(JSON.stringify(listaProduse[index].cantitate-1));
 		}
 	}
 
@@ -475,6 +490,7 @@
 
 			}
 			function edit(index) {
+
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
