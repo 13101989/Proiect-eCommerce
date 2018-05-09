@@ -426,6 +426,19 @@
 			}
 		}
 
+		function cheie(cantitate,e) {
+
+		var editare=document.getElementById("plus_minus").value;
+		var max_caractere=1;
+
+		if(e.key >= 1 && e.key <= 9 && editare.length < max_caractere) {
+			total=e.key;
+		}else {
+			e.preventDefault();
+			
+		}
+	}
+
 
 	</script>
 </head>
@@ -453,7 +466,7 @@
 				<div class="produse_cantitate">Produse pe stoc: <span id="produsePeStoc"></span></div><br />
 				<div class="produse_cantitate" id="cantitate">Cantitate:&nbsp;
 					<i class="fas fa-plus fa-xs" id="plus" onclick="plus()"></i>
-					<input type="text" id="plus_minus" value="1" />
+					<input type="text" id="plus_minus" value="1" onkeypress="cheie(this,event)" />
 					<i class="fas fa-minus fa-xs" id="minus" onclick="minus()"></i>
 				</div>
 				<div id="pret"></div>

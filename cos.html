@@ -341,16 +341,19 @@
 		for(var i in listaProduse){
 
 		var editare=document.getElementById(""+index+"A").value;
+		var max_caractere=1;
 
-		if(e.key >= "1" && e.key <= "9") {
+		if(e.key >= 1 && e.key <= 9 && editare.length < max_caractere) {
 
 		}else {
 			e.preventDefault();
-			editare="1";
+			
 		}}
 	}
 
 	function plus(index) {
+
+		if(listaProduse[index].cantitate < 15){
 
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
@@ -361,7 +364,7 @@
 		}
 		xhttp.open("PUT", "https://coscumparaturi-90c56.firebaseio.com/"+index+"/cantitate.json", true);
 		xhttp.send(JSON.stringify(listaProduse[index].cantitate+1));
-		
+		}
 	}
 
 	function minus(index) {
