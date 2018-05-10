@@ -4,6 +4,189 @@
 	<title>Detalii produs</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 	<style>
+
+	@media only screen and (max-width: 425px) {
+
+
+							body{
+								background-color: #000000;
+								margin: 0px;
+								
+								
+							}
+
+							.wrapper {
+								  margin:0 auto;
+								  max-width: 425px;  
+								  text-align: center;
+								  justify-content: center;
+								}
+
+							.containerImagine{
+									display: grid;
+									grid-template-columns: 320px 
+									grid-template-rows: 90px;
+									grid-row-gap: 10px;
+									text-align: center;
+									background-color: #ffffff;
+									justify-content: center;
+									border-left: 122px solid black;
+									border-right: 119px solid black;
+
+								}
+
+						
+							.top{
+								display: grid;
+								grid-template-columns: 320px;
+								grid-template-rows: 95px;
+								text-align: center;
+								background-color: #ffffff;
+								position:fixed;
+								z-index:3;
+								border-bottom:7px solid black;
+							}
+
+							.grid-item1 {
+							
+							}
+
+							.grid-item2 {
+								border-right: none;
+								border-left: none;
+								padding-bottom: 0px;
+								margin-top:5px;
+								margin-left: -90px;
+								padding-left:0px;
+								
+							}
+
+							.grid-item3 {
+								border-left: none;	
+								margin-left:200px;
+								margin-top:4px;	
+							}
+
+							.grid-item4 {
+								margin-top:-95px;
+								background-color: black;
+								margin-left:200px;
+								transform: scale(0.7);
+								
+	
+							}
+							
+
+								.i{
+									border:1px solid white;
+								}
+
+
+								#sunet {
+									position: absolute;
+									width: 160px;
+									height:90px;
+									padding-top: 0px;
+
+								}
+
+								#unde {
+									display:none;
+
+								}
+
+								#carucior {
+									position: absolute;
+									width: 18px;
+									height: 13px;
+									padding-bottom: 25px;
+									padding-left:25px;
+									transform: scale(0.7);
+									margin-top:0px;
+									z-index:-1;
+									background-color: white;
+									margin-left: -1242px; 
+
+								}
+
+								
+
+								#numarProduse {
+									background-color: #ffbffb;
+									width: 19px;
+									height: 14px;
+									margin-left: -1202px; 
+									margin-top:30px;
+									z-index:2;
+									text-align: center;
+									border-radius:6px;
+									font-weight: bold;
+									font-size: 17px;
+									visibility: hidden;
+									outline: none;
+									position:relative;
+									padding:3px;
+									border: 2px solid black;
+								}
+
+								
+
+								#bandaCos {
+									position: fixed;
+									margin-top: 0px;
+									display: none;
+									color: #ffffff;
+									background-color: #000000;
+									text-align: center;
+									padding-top: 2px;
+									height: 52px;
+									border-bottom: 1px solid black;
+									width: 316px;
+									box-shadow: 3px 5px 11px #000;
+									z-index:4;
+									font-family: "Lucida Console", Monaco, monospace;
+									margin-left:1px;
+									margin-right:3px;
+								}
+
+								.grid{
+										border: 5px solid black;
+									}
+
+									.containerImagine div:nth-child(1) {
+										grid-column: 1 / span 2;
+										text-align: left;
+										padding-left: 240px;
+										border: none;	
+									}
+
+									.containerImagine div:nth-child(4) {
+										grid-column: 1 / span 2;
+									}
+
+									.containerImagine div:nth-child(3) {
+										border: none;
+									}
+
+
+									#imagine{
+										width: 450px;
+										height: 412px;		
+									}
+
+									#nume{
+										font-family: "Comic Sans MS", cursive, sans-serif;
+									}
+
+
+									#descriere{
+										font-family: Tahoma, Geneva, sans-serif;
+										text-align: left;
+										padding: 15px;
+										font-weight: 500;
+									}
+
+							}
 	body{
 		background-color: #ffffff;
 		margin: 0px;
@@ -252,76 +435,9 @@
 		color: inherit;
 	}
 
-	@media only screen and (max-width: 800px) {
-		.top{
-			display: grid;
-			grid-template-columns: 600px;
-			grid-template-rows: 150px;
-			text-align: center;
-			background-color: #ffffff;		
-		}
+							
 
-		.grid-item1 {
-
-		}
-
-		.grid-item2 {
-			border-right: none;
-			border-left: none;
-			padding-bottom: 50px;
-			padding-left: 7px;
-
-		}
-
-		.grid-item3 {
-			border-left: none;		
-		}
-
-		.grid-item4 {
-			padding-left: 130px;
-			border-left: none;
-
-
-		}
-
-		.wrapper {
-			margin:0 auto;
-			max-width: 800px;  
-			text-align: center;
-			justify-content: center;
-		}
-
-		.i{
-			width: 30px;
-			height: 30px;
-		}
-
-
-		#sunet {
-			position: absolute;
-			width: 130px;
-			height: 90px;
-			padding-top: 1px;
-
-		}
-
-		#unde {
-			position: absolute;
-			width: 75px;
-			height: 60px;
-			padding-left: 15px;
-			padding-top: 25px;
-
-		}
-
-		#carucior {
-			position: absolute;
-			width: 50px;
-			height: 50px;
-			padding-left: 300px;
-			padding-top: 25px;
-		}
-	}
+						
 </style>
 <script>
 
