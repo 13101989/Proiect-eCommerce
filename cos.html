@@ -148,52 +148,67 @@
 		border-right: none;
 		border-left: none;
 		position: fixed;
-		padding-left: 435px;
+		margin-left: 435px;
+		z-index: 3;
 	}
+
 	.grid-item3 {
 		border-left: none;
 		position: fixed;
+		
 	}
+
 	.grid-item4 {
 		border-left: none;
 		position: fixed;
-		padding-left: 1100px;
+		margin-left: 1100px;
+		margin-top: 5px;
+		z-index:1;
 	}
+
 	.i{
 		width: 30px;
 		height: 30px;
 		margin-top: 100px;
-
+		z-index:1;
 	}
+
+
 	#sunet {
 		position: absolute;
 		width: 240px;
 		height: 130px;
-		padding-left: 115px;
-		padding-top: 1px;
+		margin-left: 115px;
+		margin-top: 1px;
+		z-index:3;		
 	}
+
 	#unde {
 		position: absolute;
 		width: 150px;
 		height: 110px;
 		padding-left: 130px;
 		padding-top: 15px;
+
 	}
+
 	#carucior {
 		position: absolute;
 		width: 65px;
 		height: 60px;
-		padding-left: 1259px;
-		padding-top: 62px;
-		z-index:-1;
+		margin-left: 1259px;
+		margin-top: 65px;
+		z-index:-2;
+
 	}
+
 	#numarProduse {
 		background-color: #ffbffb;
 		width: 27px;
 		height: 31px;
 		margin-left: 1287px;
 		margin-top: 55px;
-		z-index:2;
+		z-index:4;
 		text-align: center;
 		border-radius:10px;
 		font-weight: bold;
@@ -201,8 +216,8 @@
 		visibility: hidden;
 		outline: none;
 		cursor: pointer;
-		z-index:-1;
 	}
+
 	#paginaDeProduse{
 		height: 40px;
 		font-size: 15px;
@@ -717,7 +732,7 @@
 	<div class="wrapper">
 		<div class="top">
 			<div class="grid-item1"><img id="unde" src="wave.png" /></div>
-			<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
+			<div class="grid-item2"><a href="proiect.html"><img id="sunet" src="sunet.jpg" /></a></div>
 			<div class="grid-item3">
 				<a href="cos.html">
 					<i id="carucior" class="fas fa-shopping-cart fa-4x"></i>

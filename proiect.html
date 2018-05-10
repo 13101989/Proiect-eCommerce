@@ -41,12 +41,14 @@
 				border-right: none;
 				border-left: none;
 				position: fixed;
-				padding-left: 435px;
+				margin-left: 435px;
+				z-index: 2;
 			}
 
 			.grid-item3 {
 				border-left: none;
 				position: fixed;
+				z-index:1;
 			}
 
 			.grid-item4 {
@@ -54,6 +56,7 @@
 				position: fixed;
 				margin-left: 1100px;
 				margin-top: 100px;
+				z-index:-1;
 			}
 
 			.i{
@@ -67,8 +70,9 @@
 				position: absolute;
 				width: 240px;
 				height: 130px;
-				padding-left: 115px;
-				padding-top: 1px;
+				margin-left: 115px;
+				margin-top: 1px;
+				
 			}
 
 			#unde {
@@ -84,9 +88,10 @@
 				position: absolute;
 				width: 65px;
 				height: 60px;
-				padding-left: 1250px;
-				padding-top: 35px;
+				margin-left: 1250px;
+				margin-top: 35px;
 				z-index:-1;
+
 			}
 
 
@@ -692,7 +697,7 @@
 			</div>
 		<div class="top">
 			<div class="grid-item1"><img id="unde" src="wave.png" /></div>
-		 	<div class="grid-item2"><img id="sunet" src="sunet.jpg" /></div>
+		 	<div class="grid-item2"><a href="proiect.html"><img id="sunet" src="sunet.jpg" /></a></div>
 		  	<div class="grid-item3">
 		  		<button class="admin" onclick="admin()"><i class="fas fa-lock"></i></button>
 		  		<a href="cos.html">
