@@ -3,190 +3,10 @@
 <head>
 	<title>Detalii produs</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 
-	@media only screen and (max-width: 425px) {
-
-
-							body{
-								background-color: #000000;
-								margin: 0px;
-								
-								
-							}
-
-							.wrapper {
-								  margin:0 auto;
-								  max-width: 425px;  
-								  text-align: center;
-								  justify-content: center;
-								}
-
-							.containerImagine{
-									display: grid;
-									grid-template-columns: 320px 
-									grid-template-rows: 90px;
-									grid-row-gap: 10px;
-									text-align: center;
-									background-color: #ffffff;
-									justify-content: center;
-									border-left: 122px solid black;
-									border-right: 119px solid black;
-
-								}
-
-						
-							.top{
-								display: grid;
-								grid-template-columns: 320px;
-								grid-template-rows: 95px;
-								text-align: center;
-								background-color: #ffffff;
-								position:fixed;
-								z-index:3;
-								border-bottom:7px solid black;
-							}
-
-							.grid-item1 {
 							
-							}
-
-							.grid-item2 {
-								border-right: none;
-								border-left: none;
-								padding-bottom: 0px;
-								margin-top:5px;
-								margin-left: -90px;
-								padding-left:0px;
-								
-							}
-
-							.grid-item3 {
-								border-left: none;	
-								margin-left:200px;
-								margin-top:4px;	
-							}
-
-							.grid-item4 {
-								margin-top:-95px;
-								background-color: black;
-								margin-left:200px;
-								transform: scale(0.7);
-								
-	
-							}
-							
-
-								.i{
-									border:1px solid white;
-								}
-
-
-								#sunet {
-									position: absolute;
-									width: 160px;
-									height:90px;
-									padding-top: 0px;
-
-								}
-
-								#unde {
-									display:none;
-
-								}
-
-								#carucior {
-									position: absolute;
-									width: 18px;
-									height: 13px;
-									padding-bottom: 25px;
-									padding-left:25px;
-									transform: scale(0.7);
-									margin-top:0px;
-									z-index:-1;
-									background-color: white;
-									margin-left: -1242px; 
-
-								}
-
-								
-
-								#numarProduse {
-									background-color: #ffbffb;
-									width: 19px;
-									height: 14px;
-									margin-left: -1202px; 
-									margin-top:30px;
-									z-index:2;
-									text-align: center;
-									border-radius:6px;
-									font-weight: bold;
-									font-size: 17px;
-									visibility: hidden;
-									outline: none;
-									position:relative;
-									padding:3px;
-									border: 2px solid black;
-								}
-
-								
-
-								#bandaCos {
-									position: fixed;
-									margin-top: 0px;
-									display: none;
-									color: #ffffff;
-									background-color: #000000;
-									text-align: center;
-									padding-top: 2px;
-									height: 52px;
-									border-bottom: 1px solid black;
-									width: 316px;
-									box-shadow: 3px 5px 11px #000;
-									z-index:4;
-									font-family: "Lucida Console", Monaco, monospace;
-									margin-left:1px;
-									margin-right:3px;
-								}
-
-								.grid{
-										border: 5px solid black;
-									}
-
-									.containerImagine div:nth-child(1) {
-										grid-column: 1 / span 2;
-										text-align: left;
-										padding-left: 240px;
-										border: none;	
-									}
-
-									.containerImagine div:nth-child(4) {
-										grid-column: 1 / span 2;
-									}
-
-									.containerImagine div:nth-child(3) {
-										border: none;
-									}
-
-
-									#imagine{
-										width: 450px;
-										height: 412px;		
-									}
-
-									#nume{
-										font-family: "Comic Sans MS", cursive, sans-serif;
-									}
-
-
-									#descriere{
-										font-family: Tahoma, Geneva, sans-serif;
-										text-align: left;
-										padding: 15px;
-										font-weight: 500;
-									}
-
-							}
 	body{
 		background-color: #ffffff;
 		margin: 0px;
@@ -434,6 +254,235 @@
 		text-decoration: none;
 		color: inherit;
 	}
+
+						@media only screen and (max-width: 425px) {
+
+
+							body{
+								background-color: #ffffff;
+								margin: 0px;
+							
+							}
+
+							.wrapper {
+								  margin:0 auto;
+								  max-width: 425px;  
+								  text-align: center;
+								  justify-content: center;
+								  background-color: white;
+								}
+
+							.top{
+								display: grid;
+								grid-template-columns: 321px;
+								grid-template-rows: 95px;
+								text-align: center;
+								background-color: #ffffff;
+								position:fixed;
+								z-index:3;
+								border-bottom:7px solid black;
+								height: 95px;
+							}
+
+							.grid-item1 {
+							
+							}
+
+							.grid-item2 {
+								border-right: none;
+								border-left: none;
+								padding-bottom: 0px;
+								margin-top:5px;
+								margin-left: -90px;
+								padding-left:0px;
+								z-index:4;
+							}
+
+							.grid-item3 {
+								border-left: none;	
+								margin-left:200px;
+								margin-top:-10px;
+								z-index:-2;	
+							}
+
+							.grid-item4 {
+								display:none;
+							}
+							
+								.i{
+									border:1px solid white;
+									
+								}
+
+
+								#sunet {
+									position: absolute;
+									width: 160px;
+									height:90px;
+									padding-top: 0px;
+
+								}
+
+								#unde {
+									display:none;
+
+								}
+
+								#carucior {
+									position: absolute;
+									width: 12px;
+									height: 10px;
+									padding-bottom: 25px;
+									padding-left:25px;
+									transform: scale(0.66);
+									margin-top:3px;
+									z-index:-1;
+									background-color: white;
+									margin-left: 3px; 
+
+								}
+
+								
+
+								#numarProduse {
+									background-color: #ffbffb;
+									width: 19px;
+									height: 14px;
+									margin-left: 41px; 
+									margin-top:53px;
+									z-index:2;
+									text-align: center;
+									border-radius:6px;
+									font-weight: bold;
+									font-size: 17px;
+									visibility: hidden;
+									outline: none;
+									position:relative;
+									padding:3px;
+									border: 2px solid black;
+								}
+
+								
+
+								#bandaCos {
+									position: fixed;
+									margin-top: 0px;
+									display: none;
+									color: #ffffff;
+									background-color: #000000;
+									text-align: center;
+									padding-top: 2px;
+									height: 52px;
+									border-bottom: 1px solid black;
+									width: 316px;
+									box-shadow: 3px 5px 11px #000;
+									z-index:4;
+									font-family: "Lucida Console", Monaco, monospace;
+									margin-left:1px;
+									margin-right:3px;
+								}
+
+								.containerImagine{
+									display: grid;
+									grid-template-columns: 320px;
+									grid-template-rows: 0px 320px 350px 200px;
+									text-align: center;
+									justify-content: center;
+									z-index:-1;
+									grid-row-gap: 0px;
+									
+									
+									background-color: #ffffff;
+
+								}
+
+								.grid{
+								
+									background-color: #ffffff;
+								}
+
+
+							.containerImagine div:nth-child(1) {
+									grid-column: 1 / span 1;
+									text-align: left;
+									padding-left: 50px;
+									border: none;
+									z-index:1;	
+									margin-top:-48px;
+									font-size: 12px;
+								}
+
+								.containerImagine div:nth-child(4) {
+									grid-column: 1 / span 1;
+								}
+
+								.containerImagine div:nth-child(3) {
+									border: none;
+								}
+								
+								#imagine{
+									width: 250px;
+									height: 300px;		
+								}
+
+								#nume{
+									font-family: "Lucida Console", Monaco, monospace;
+								}
+
+
+								#descriere{
+									font-family: Tahoma, Geneva, sans-serif;
+									text-align: left;
+									padding: 15px;
+									font-weight: 500;
+								}
+
+									#pret{
+									color: black;
+									font-weight: 900;
+									font-size: 25px;
+									font-family: "Comic Sans MS", cursive, sans-serif;	
+									margin-top: 20px;	
+								}
+
+								#butonCos {
+									height: 90px;
+									width: 120px;
+									transform: scale(0.85);
+									background-color: #ffffff;
+									color:#000000;
+									cursor: pointer;
+									font-weight: 500;
+									font-size: 18px;
+									margin-top: 0px;
+									border-radius: 5px;
+									position: relative;
+									overflow:hidden;
+									box-shadow: 3px 5px 11px #000;
+									outline: none;
+									z-index:1;
+
+								}
+
+								#butonCos:hover {
+									border: 3px solid black;
+								}
+
+								#paginaDeProduse{
+									margin-top:5px;
+									height: 40px;
+									font-size: 15px;
+									color:black;
+									background-color: white;
+									border-radius: 10px;
+									outline: none;
+								}
+
+								#paginaDeProduse:hover {
+									border: 3px solid black;
+
+								}
+							}
 
 							
 
