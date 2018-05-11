@@ -724,6 +724,11 @@
 
 	}
 
+		function openInNewTab(url) {
+			  var win = window.open(url, '_blank');
+			  win.focus();
+			}
+
 </script>
 </head>
 
@@ -738,7 +743,7 @@
 					<input type="text" id="numarProduse" value="0"></input>
 				</a>
 			</div><br /><br /><br /><br /><br />
-			<div class="grid-item4"><a href="https://www.instagram.com/lendmeurears.au/"><img class="i" src="fi-instagram.png" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/lendmeurearsaustralia/"><img class="i" src="fi-facebook.png" /></a>&nbsp;&nbsp;<a href="https://twitter.com/hifiheadphones"><img class="i" src="fi-tumblr.png" /></a></div>
+			<div class="grid-item4"><span onclick="openInNewTab('https://www.instagram.com/lendmeurears.au/');"><img class="i" src="fi-instagram.png" /></span>&nbsp;&nbsp;<span onclick="openInNewTab('https://www.facebook.com/lendmeurearsaustralia/')"><img class="i" src="fi-facebook.png" /></span>&nbsp;&nbsp;<span onclick="openInNewTab('https://twitter.com/hifiheadphones');"><img class="i" src="fi-tumblr.png" /></span></div>
 		</div><br /><br /><br /><br /><br /><br /><br /><br />
 		<a href="proiect.html"><button id="paginaDeProduse"><i class="fas fa-arrow-left">&nbsp;&nbsp;Inapoi la pagina de produse</i></button></a><br />
 		<div class="gridContainer">
