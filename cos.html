@@ -403,13 +403,13 @@
 
 								.gridContainer{
 									display: grid;
-									grid-template-columns: 159px 148px;
-									width: 300px;
+									grid-template-columns: 200px 100px;
+									width: 380px;
 									grid-template-rows: 65px;
 									grid-auto-rows: 65px;
 									text-align: center;
 									background-color: #ffffff;
-									padding-left: 2px;
+									padding-left: 5px;
 
 								}
 
@@ -479,15 +479,15 @@
 								.cant .fas{
 									cursor:pointer;
 									position:absolute;
-									margin-left:-17px;
+									margin-left:-16px;
 									margin-top:1px;
-									padding:6px;
+									padding:5px;
 									border-left:1px solid #e2e2e0;
 									border-right:1px solid #e2e2e0;
 								}
 
 								.cant{
-									transform: scale(1.1);
+									transform: scale(1.3);
 
 								}
 
@@ -533,14 +533,15 @@
 				var str=`<div class="gridContainer">
 				<div class="cell" id="imagineC">Imagine</div>
 				<div class="cell" id="produsC">Produs</div>
-				<div class="cell" id="cantitateC">Cantitate</div>
 				<div class="cell" id="pretC">Pret</div>
+				<div class="cell" id="cantitateC">Cantitate</div>
 				<div class="cell" id="eliminaC">Elimina</div>`
 
 				if (listaProduse) {
 					for(var i in listaProduse){
 						var rand = `<div class="cell1" id="${i}C"><img class="casti" src="${listaProduse[i].imagine}" /></div>
 						<div class="cell2" id="${i}D"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
+						<div id="${i}F" class="cell2">${listaProduse[i].pret}</div>
 						<div class="cell3" id="${i}E">
 						<div class="cant">
 						<i class="fas fa-plus fa-xs" onclick="plus('${i}')"></i>
@@ -549,7 +550,6 @@
 						</div>
 						<span id="${i}B" class="produseStoc">Produse pe stoc: 10</span>
 						</div>
-						<div id="${i}F" class="cell2">${listaProduse[i].pret}</div>
 						<div class="cell2" id="${i}G"><a href="#" class="x" onclick="elimina('${i}')"><i class="fas fa-trash-alt"></i></a></div>`
 						str+=rand;
 
