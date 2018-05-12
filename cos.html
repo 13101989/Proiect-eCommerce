@@ -152,6 +152,14 @@
 		text-align:center;
 	}
 
+	.cell0 {
+		border: 1px solid black;
+		padding-top: 38px;
+		font-size: 18px;
+		font-family: "Lucida Console", Monaco, monospace;	
+		text-align:center;
+	}
+
 	.cell4 {
 		border: 1px solid black;
 		padding-top: 38px;
@@ -459,7 +467,17 @@
 									font-size: 20px;
 									font-weight:bold;	
 									text-align:center;
-									background-color: #d2f4f0;
+									background-color: #ffbffb;
+								}
+
+								.cell0 {
+									
+									padding-top: 15px;
+									font-family: "Lucida Console", Monaco, monospace;
+									font-size: 20px;
+									font-weight:bold;	
+									text-align:center;
+									background-color: none;
 								}
 
 								.cell4 {
@@ -558,7 +576,7 @@
 					for(var i in listaProduse){
 						var rand = `<div class="cell1" id="${i}C"><img class="casti" src="${listaProduse[i].imagine}" /></div>
 						<div class="cell2" id="${i}D"><a href="#" class="produs" id="${i}" onclick="back('${i}')">${listaProduse[i].produs}</a></div>
-						<div id="${i}F" class="cell2">${listaProduse[i].pret}</div>
+						<div id="${i}F" class="cell0">${listaProduse[i].pret}</div>
 						<div class="cell3" id="${i}E">
 						<div class="cant">
 						<i class="fas fa-plus fa-xs" onclick="plus('${i}')"></i>
