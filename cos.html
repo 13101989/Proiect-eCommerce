@@ -151,6 +151,14 @@
 		font-family: "Lucida Console", Monaco, monospace;	
 		text-align:center;
 	}
+
+	.cell4 {
+		border: 1px solid black;
+		padding-top: 38px;
+		font-size: 18px;
+		font-family: "Lucida Console", Monaco, monospace;	
+		text-align:center;
+	}
 	.cell3 {
 		border: 1px solid black;
 		padding-top: 33px;
@@ -404,18 +412,15 @@
 								.gridContainer{
 									display: grid;
 									grid-template-columns: 200px 100px;
-									width: 380px;
+									width: 300px;
 									grid-template-rows: 65px;
 									grid-auto-rows: 65px;
 									text-align: center;
 									background-color: #ffffff;
-									padding-left: 5px;
+									padding-left: 3px;
 
 								}
 
-								.gridContainer:nth-child(odd) {
-								    
-								}
 
 								#imagineC{
 									
@@ -454,6 +459,17 @@
 									font-size: 20px;
 									font-weight:bold;	
 									text-align:center;
+									background-color: #d2f4f0;
+								}
+
+								.cell4 {
+									
+									padding-top: 15px;
+									font-family: "Lucida Console", Monaco, monospace;
+									font-size: 20px;
+									font-weight:bold;	
+									text-align:center;
+									
 								}
 								.cell3 {
 									
@@ -510,6 +526,7 @@
 
 								.x{
 									color:red;
+									background-color: none;
 								}
 							}
 
@@ -550,7 +567,7 @@
 						</div>
 						<span id="${i}B" class="produseStoc">Produse pe stoc: 10</span>
 						</div>
-						<div class="cell2" id="${i}G"><a href="#" class="x" onclick="elimina('${i}')"><i class="fas fa-trash-alt"></i></a></div>`
+						<div class="cell4"  id="${i}G"><a href="#" class="x" onclick="elimina('${i}')"><i class="fas fa-trash-alt"></i></a></div>`
 						str+=rand;
 
 					}
