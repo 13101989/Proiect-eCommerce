@@ -88,7 +88,18 @@
 		<script>
 
 			function site() {
-					window.location = "proiect.html";
+
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				window.location = "proiect.html";
+			}
+		}
+
+		xhttp.open("DELETE", "https://coscumparaturi-90c56.firebaseio.com/.json", true);
+		xhttp.send();
+
+
 				}
 			
 		</script>
